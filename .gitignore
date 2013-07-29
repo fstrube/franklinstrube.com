@@ -1,0 +1,5 @@
+# Ruby Bundler's dotfolder
+.bundle
+
+# CTags generated cache files
+.tags*
