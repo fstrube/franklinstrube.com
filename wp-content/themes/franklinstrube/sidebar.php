@@ -27,6 +27,27 @@
 ?>
             <div role="sidebar" class="sidebar">
                 <aside>
+                    <div class="callout callout-tweet">
+                        <h3>Tweet</h3>
+                        <p>Is anybody else happy that @magento is leveraging the use of MySQL triggers in CE1.8 and EE1.13?</p>
+                        <time datetime="2013-05-03 01:00-400">Friday, May 3, 2013</time>
+                    </div>
+                    <div class="callout callout-protip">
+                        <h3>Protip</h3>
+                        <h2>Proxying SSH Connections</h2>
+                        <p>Have you ever had to connect to an SSH server that is behind some sort of firewall? Luckily, SSH makes connecting to these systems simple by allowing us to "proxy" through any command, even another SSH connection!</p>
+                        <p><a href="https://coderwall.com/p/bhhvya">read more</a></p>
+                    </div>
+                    <div class="callout callout-tweet">
+                        <h3>Tweet!</h3>
+                        <p>@colinmollenhour Nice! Just got to the Excalibur and are now gorging at the buffet. Should be to M resort in time for the welcoming.</p>
+                        <time datetime="2013-04-08 21:02-400">Monday, April 8th, 2013</time>
+                    </div>
+                    <div class="callout callout-tweet">
+                        <h3>Tweet!</h3>
+                        <p>On our way to Magento Imagine. Should land in about 6 hours. See you there? @colinmollenhour</p>
+                        <time datetime="2013-04-08 13:49-400">Monday, April 8th, 2013</time>
+                    </div>
                     <div class="callout callout-protip">
                         <h3>Protip</h3>
                         <h2>Best sudo alias ever</h2>
@@ -36,7 +57,7 @@
                     </div>
                     <div class="callout callout-snippet">
                         <h3>Snippet</h3>
-                        <h2>Array to CSV</h2>
+                        <h2>Magento Javascript</h2>
                         <pre><code class="language-markup">&lt;?xml version="1.0"?&gt;
 &lt;layout version="0.1.0"&gt;
     &lt;default&gt;

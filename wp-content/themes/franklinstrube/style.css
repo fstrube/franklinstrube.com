@@ -20,7 +20,7 @@
  * Author: Franklin Strube <franklin.strube@gmail.com>
  * Author URI: http://franklinstrube.com
  * Description: A minimal, responsive theme
- * Version: 0.1
+ * Version: 0.1.1-alpha
  * License: Apache v2 License
  * License URI: http://www.apache.org/licenses/LICENSE-2.0
  * Tags: responsive, blue, gray, white, one-column, two-columns, right-sidebar, flexible-width, custom-menu, featured-images, flexible-header, full-width-template, microformats, mobile
@@ -131,16 +131,15 @@ html, body { background: #F6F6F0; font-family: 'Open Sans', sans-serif; font-siz
 .single .main .nav-single .nav-previous { float: left; }
 .single .main .nav-single .nav-next { float: right; }
 
-.comments { background: #f0f0dc; border-top: solid 1px #999; margin: 0; padding: 0 20px 60px; }
+.comments { background: #f0f0dc; border-top: solid 1px #e4e4d5; margin: 0; padding: 0 20px 60px; }
 .comments .main { margin-top: -200px; }
-.comments #comments { padding-top: 120px; }
+.comments #comments, .comments #respond { padding-top: 120px; }
 .comments .commentlist, .commentlist .children { list-style-type: none; margin: 0; padding: 0; }
 .comments .commentlist .comment { margin: 0; padding: 20px; }
 .comments .commentlist .depth-1 { border-bottom: solid 1px #c6c6c0; padding-bottom: 0; }
 .comments .commentlist .depth-1:after { background: #f0f0dc; color: #c6c6c0; content: '#'; clear: left; display: block; font-size: 20px; line-height: 1; margin: 30px auto -10px; text-align: center; width: 30px; }
 /*.commentlist .odd { background-color: #d6d6d0; }*/
 .comments .comment .children { /*border-left: solid 2px #c6c6c0;*/ margin-left: 60px; }
-.comments #respond { padding: 20px; }
 .comments #respond textarea { width: 100%; }
 
 /*
@@ -207,7 +206,8 @@ footer * { color: #658BDC; }
 
     .single .main { margin: 0 20px; width: auto; }
 
-    #footer .about { border-left: none; width: 100%; -webkit-transition: width 0.5s; }
+    #footer { height: auto; }
+    #footer .about { border-left: none; float: none; height: auto; margin-bottom: 30px; width: 100%; -webkit-transition: width 0.5s; }
     #footer .about dt { margin-bottom: 0; }
     #footer .about dd { clear: left; margin-left: 0; }
     #footer .copyright { clear: right; position: static; width: auto; }
@@ -272,7 +272,7 @@ body.compact { font-size: 0.8em; }
     .excerpt h2 { line-height: 2.5em; }
 
     .comments .main { margin-top: -110px; }
-    .comments #comments { padding-top: 70px; }
+    .comments #comments, .comments #respond { padding-top: 70px; }
 
     #wpadminbar { top: 46px !important; }
 }

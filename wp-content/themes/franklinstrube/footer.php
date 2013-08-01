@@ -43,6 +43,7 @@
                                 Minors in Economics and Entrepreneurship
                             </dd>
                         </dl>
+                        <p><a class="resume" title="Hire Me!" href="http://franklinstrube.com/wp-content/uploads/2013/05/Resume_Generic_2013-05.pdf">View Resume</a></p>
                     </section>
                 </div>
                 <a name="contact"></a>
