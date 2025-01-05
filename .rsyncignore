@@ -1,0 +1,17 @@
+# Add includes before excludes: wp-config and custom theme
++ /wp-config.php
++ /wp-content/
++ /wp-content/themes/
++ /wp-content/themes/franklinstrube/
++ /wp-content/themes/franklinstrube/**
+
+# Exclude WordPress core files
+- /wp-admin/
+- /wp-admin/**
+- /wp-includes/
+- /wp-includes/**
+- /wp-content/
+- /wp-content/**
+- /wp-*.php
+- /xmlrpc.php
+- /index.php
