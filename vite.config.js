@@ -8,4 +8,13 @@ export default defineConfig({
             refresh: true,
         }),
     ],
+    server: {
+         watch: {
+            ignored: [
+                '**/vendor/**/*',
+                '**/wp-content.x/**/*',
+                '**/storage/**/*',
+            ],
+        },
+    }
 });
