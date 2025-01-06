@@ -22,7 +22,9 @@
             </header>
         </div>
         <div class="wrapper">
-            @yield('content')
+            <main>
+                @yield('content')
+            </main>
             <div class="push"></div>
         </div>
         <div id="footer" class="hcard">
@@ -61,7 +63,7 @@
                     <a class="linkedin" title="LinkedIn: fstrube" href="http://linkedin.com/in/fstrube" rel="me">fstrube</a>
                 </div>
                 <div class="copyright">
-                    &copy; 2013
+                    &copy; {{ date('Y') }}
                     <span class="n">
                         <span class="given-name">Franklin</span>
                         <span class="additional-name">P.</span>

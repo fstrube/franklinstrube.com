@@ -68,7 +68,7 @@ html, body { background: #F6F6F0; font-family: 'Open Sans', sans-serif; font-siz
 
 /* TODO test in IE */
 #header { background: #2F4167; border: solid 1px #051E52; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5); margin: 0; padding: 20px 0; }
-#header h1 { color: #658BDC; font-family: 'Yanone Kaffeesatz', sans-serif; font-weight: 400; line-height: 1.2em; margin: 0px 20px 6px; padding:0; position: absolute; font-size: 2.8em;}
+#header h1 { color: #658BDC; font-family: 'Yanone Kaffeesatz', sans-serif; font-weight: 400; line-height: 1.2em; margin: 0px 20px 6px; padding:0; font-size: 2.8em;}
 #header h1 a { color: #658BDC; text-decoration: none; }
 #header h1 a span { color: #E6B517; }
 
