@@ -22,10 +22,12 @@
                 <h1><a href="/">#!/bin/<span>strube</span></a></h1>
                 <nav role="navigation">
                     <button class="toggle-navigation">Show Navigation</button>
+                    @include('partials.nav')
                 </nav>
             </header>
         </div>
         <div class="wrapper">
+            @yield('sidebar')
             <main>
                 @yield('content')
             </main>
@@ -87,5 +89,6 @@
             <div class="media-query-320"></div>
         </div>
         -->
+        <script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     </body>
 </html>

@@ -9,6 +9,7 @@ class HomeController extends Controller
     {
         return view('pages.home', [
             'posts' => BlogPost::published()->orderBy('published_at', 'desc')->get(),
+            'asides' => [],
         ]);
     }
 }
