@@ -24,4 +24,9 @@ class BlogPost extends Model
     {
         return $this->morphToMany(Tag::class, 'taggable', 'taggables_tags');
     }
+
+    public function scopePublished($query)
+    {
+        $query->whereNotNull('published_at');
+    }
 }

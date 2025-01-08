@@ -8,7 +8,7 @@ class HomeController extends Controller
     public function index()
     {
         return view('pages.home', [
-            'posts' => BlogPost::query()->orderBy('published_at', 'desc')->get(),
+            'posts' => BlogPost::published()->orderBy('published_at', 'desc')->get(),
         ]);
     }
 }
