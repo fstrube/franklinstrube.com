@@ -1,5 +1,9 @@
 @extends('layouts.default')
 
+@section('title')
+    Home
+@endsection
+
 @section('content')
     <div role="main" class="main">
         @foreach($posts as $post)

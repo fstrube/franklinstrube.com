@@ -4,7 +4,11 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>
+            @yield('title') &laquo; #!/bin/strube
+        </title>
+
+        <link rel="icon" href="/favicon.ico">
 
         <!-- Fonts -->
         <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,700|Yanone+Kaffeesatz:400,700,300" type="text/css" />
@@ -34,20 +38,20 @@
                         <h4><a name="about">Who is <em>strube</em>?</a></h4>
                         <img class="photo grayscale" src="/images/me.jpg" alt="avatar" width="100" />
                         <!--p>I am a web developer living and working in Alexandria, VA. I have been working in the web industry for four years. In addition to programming the web, I enjoy playing endless hours of Civilization II (sad ... I know).</p-->
-                        <p>Contrary to what the header of this page suggests, <strong>strube</strong> is not a computer program. Rather, it is the surname of Franklin P. Strube, <a href="/">decorated</a> web developer and <a href="http://www.reddit.com/r/maille" target="_blank" title="(the kind for your torso, not your inbox)">chainmail</a> creator.</p>
-                        <p>Frank spends his daylight hours working with open-source tools to build complex web software and middleware. He is currently:</p>
+                        <p>Contrary to what the header of this page suggests, <strong>strube</strong> is not a computer program. Rather, it is the surname of Franklin P. Strube.</p>
+                        <p>Frank spends his daylight hours leading the technology team at <a href="//morevang.com" target="_blank">More Vang</a> and spends his night staying up way too late coding. He is currently:</p>
                         <dl>
                             <dt>Living In</dt>
-                            <dd>Alexandria, VA</dd>
+                            <dd>Washington, D.C.</dd>
 
                             <dt>Working At</dt>
-                            <dd><a href="http://globalthinking.com">Global Thinking</a> as a Senior Web Developer</dd>
+                            <dd><a href="//morevang.com" target="_blank">More Vang</a> as the Chief Software Architect</dd>
 
                             <dt>Learning About</dt>
                             <!--dd>Python GUI programming, Mobile development, Raspberry Pi…</dd-->
-                            <dd>Responsive design, Raspberry Pi</dd>
+                            <dd><a href="//laravel.com" target="_blank">Laravel</a>, containerization, deployment strategies</dd>
 
-                            <dt>Trained At</dt>
+                            <dt>Studied At</dt>
                             <dd>Rochester Institute of Technology<br />
                                 B.S. in Networking, Security, and System Administration<br />
                                 Minors in Economics and Entrepreneurship
@@ -58,8 +62,8 @@
                 <a name="contact"></a>
                 <div class="social-media">
                     <a class="github" title="GitHub: fstrube" href="http://github.com/fstrube" rel="me">fstrube</a>
-                    <a class="forrst" title="Forrst: fstrube" href="http://forrst.com/people/fstrube" rel="me">fstrube</a>
-                    <a class="twitter" title="Twitter: @strube" href="http://twitter.com/strube" rel="me">@strube</a>
+                    {{-- <a class="forrst" title="Forrst: fstrube" href="http://forrst.com/people/fstrube" rel="me">fstrube</a> --}}
+                    {{-- <a class="twitter" title="Twitter: @strube" href="http://twitter.com/strube" rel="me">@strube</a> --}}
                     <a class="linkedin" title="LinkedIn: fstrube" href="http://linkedin.com/in/fstrube" rel="me">fstrube</a>
                 </div>
                 <div class="copyright">
