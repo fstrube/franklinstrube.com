@@ -1,0 +1,136 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    font-size: 15px;
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+}
+
+.admin {
+    align-items: stretch;
+    background-color: #e7e7e7;
+    display: flex;
+    padding-right: 4rem;
+}
+
+/* Admin sidebar */
+.admin aside {
+    margin-right: 1rem;
+    min-width: 200px;
+    width: 10vw;
+}
+
+/* Admin sidebar - Auth section */
+.admin aside .auth {
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1rem;
+    position: relative;
+}
+
+.admin aside .auth img {
+    border-radius: 999px;
+    width: 48px;
+}
+
+.admin aside .auth > span {
+    align-self: center;
+    margin-left: 1rem;
+}
+
+.admin aside .auth ul {
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.35);
+    display: none;
+    flex-direction: column;
+    min-width: 200px;
+    padding: 0.5rem;
+    position: absolute;
+    top: calc(100% + 0.5rem);
+}
+
+.admin aside .auth[data-open] ul {
+    display: flex;
+}
+
+.admin aside .auth > ul li a {
+    align-items: center;
+    color: inherit;
+    display: flex;
+    line-height: 1;
+    padding: 0.5rem;
+    text-decoration: none;
+}
+
+/* Admin sidebar - Nav list */
+.admin aside nav > ul {
+    border-top: solid 1px #a6a6a6;
+    margin: 1rem;
+    padding: 0.5rem 0;
+}
+
+.admin aside nav > ul li a {
+    align-items: center;
+    color: inherit;
+    display: flex;
+    line-height: 1;
+    padding: 0.5rem;
+    text-decoration: none;
+}
+
+.admin aside nav ul li a[data-active] {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.admin aside nav ul li a:hover {
+    background-color: rgba(0, 0, 0, 0.15);
+}
+
+.admin aside nav ul li a svg {
+    margin-right: 0.5rem;
+}
+
+.admin header {
+    padding: 1.5rem 1rem 0 0;
+}
+
+.admin header h1 {
+    margin: 0;
+}
+
+.admin main {
+    flex-grow: 1;
+    padding: 0 1rem 1rem 0;
+}
+
+.admin main section {
+    background-color: #ffffff;
+    border: solid #f0f0f0 1px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35);
+    padding: 1rem;
+}
+
+.admin .stacked {
+    display: flex;
+    flex-direction: column;
+}
+
+.admin .muted {
+    opacity: 0.5;
+}
+
+.admin .truncate {
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

@@ -14,4 +14,9 @@ class Tag extends Model
     {
         return $this->morphedByMany(Post::class, 'taggable');
     }
+
+    public function getUrlAttribute()
+    {
+        return route('admin.tags.show', $this);
+    }
 }

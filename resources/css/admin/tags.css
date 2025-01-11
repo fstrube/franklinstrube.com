@@ -1,0 +1,61 @@
+.tag {
+    align-items: center;
+    background-color: #c7c7c7;
+    border: solid 1px #a0a0a0;
+    border-radius: 999px;
+    color: inherit;
+    display: inline-flex;
+    font-size: 0.8rem;
+    line-height: 1;
+    padding: 0.25rem 0.5rem;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.tag:hover {
+    background-color: #b7b7b7;
+}
+
+.tag svg {
+    cursor: pointer;
+    margin-left: 0.25rem;
+    width: 1em;
+}
+
+.tags-input {
+    border: solid 1px #666666;
+    border-radius: 5px;
+    display: inline-flex;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+    padding: 0.25rem 0.25rem 0;
+    width: 100%;
+}
+
+.tags-input:focus {
+    outline: solid 1px #999999;
+    outline-offset: 2px;
+}
+
+.tags-input [contenteditable] {
+    border: none;
+    border-radius: 0;
+    display: inline-block;
+    flex-grow: 1;
+    margin-bottom: 0.25rem;
+    padding: 0.25rem;
+    width: auto;
+}
+
+.tags-input [contenteditable]:focus {
+    outline: none;
+}
+
+.tags-input .tag {
+    margin: 0 0.375rem 0.25rem 0;
+}
+
+.tags-input .tag:focus {
+    outline: solid 1px #999999;
+    outline-offset: 2px;
+}

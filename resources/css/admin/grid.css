@@ -1,0 +1,121 @@
+.grid {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.grid .pagination a,
+.grid .pagination span {
+    background-color: #ffffff;
+    border: solid 1px #c7c7c7;
+    border-radius: 5px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.25);
+    color: inherit;
+    display: inline-block;
+    padding: 0.5rem;
+    text-decoration: none;
+}
+
+.grid .pagination span {
+    cursor: default;
+}
+
+.grid .pagination a[disabled] {
+    color: #cccccc;
+}
+
+.grid .pagination a[data-active] {
+    border-color: #999999;
+    border-bottom: solid 3px #666666;
+}
+
+.grid .pagination a:hover:not([disabled]) {
+    background-color: #d7d7d7;
+}
+
+.grid table {
+    border-collapse: collapse;
+    margin: 0.5rem 0 1rem;
+    width: 100%;
+}
+
+.grid thead th {
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.grid tbody {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35);
+    border-radius: 10px;
+}
+
+.grid tbody tr:nth-child(even) td {
+    background-color: #e7e7e7;
+}
+
+.grid tbody td {
+    background-color: #ffffff;
+}
+
+/* All cells */
+.grid tbody td,
+.grid thead th {
+    padding: 0.5rem;
+    text-align: left;
+}
+
+/* First column */
+.grid tbody td:first-child,
+.grid thead th:first-child {
+    padding-left: 1rem;
+}
+
+/* Last column */
+.grid tbody td:last-child,
+.grid thead th:last-child {
+    padding-right: 1rem;
+}
+
+/* Cells in first row */
+.grid tbody tr:first-child td {
+    padding-top: 1rem;
+}
+
+/* Cells in last row */
+.grid tbody tr:last-child td {
+    padding-bottom: 1rem;
+}
+
+/* Top left cell */
+.grid tbody tr:first-child td:first-child {
+    border-top-left-radius: 10px;
+}
+
+/* Top right cell */
+.grid tbody tr:first-child td:last-child {
+    border-top-right-radius: 10px;
+}
+
+/* Bottom right cell */
+.grid tbody tr:last-child td:last-child {
+    border-bottom-right-radius: 10px;
+}
+
+/* Bottom left cell */
+.grid tbody tr:last-child td:first-child {
+    border-bottom-left-radius: 10px;
+}
+
+/* Grid row actions */
+.grid tbody .actions {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+}
+
+.grid tbody .actions a,
+.grid tbody .actions button {
+    color: inherit;
+    margin-right: 0.5rem;
+    text-decoration: none;
+}

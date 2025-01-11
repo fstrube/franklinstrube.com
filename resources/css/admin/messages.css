@@ -1,0 +1,6 @@
+.messages .error {
+    background-color: #f8c7c7;
+    border: solid 1px #680000;
+    margin: 1rem 0;
+    padding: 1rem;
+}

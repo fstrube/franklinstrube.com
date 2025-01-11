@@ -1,0 +1,12 @@
+.posts .grid .url {
+    display: flex;
+    font-size: 0.8rem;
+    margin-top: 0.25rem;
+    max-width: 300px;
+    white-space: nowrap;
+}
+
+.posts .grid .url strong {
+    font-weight: 600;
+    margin-right: 0.25rem;
+}

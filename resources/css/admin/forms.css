@@ -1,0 +1,71 @@
+label {
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+input,
+textarea {
+    border: solid 1px #666666;
+    border-radius: 5px;
+    display: block;
+    margin-bottom: 1.5rem;
+    padding: 0.5rem;
+    width: 100%;
+}
+
+input:focus,
+textarea:focus {
+    outline: solid 1px #999999;
+    outline-offset: 2px;
+}
+
+button {
+    background-color: #e6e6e6;
+    border: solid 1px #666666;
+    border-radius: 5px;
+    padding: 0.5rem;
+}
+
+button.primary {
+    background-color: #3737f8;
+    border: solid 1px #0000e6;
+    color: #ffffff;
+}
+
+.labeled-input {
+    align-items: center;
+    display: flex;
+    margin-bottom: 1.5rem;
+}
+
+.labeled-input label,
+.labeled-input input {
+    margin-bottom: 0;
+}
+
+.labeled-input label {
+    margin-right: 0.25rem;
+}
+
+form .fieldset {
+    display: flex;
+    margin: 0 0 2rem;
+}
+
+form .fieldset .overview {
+    margin-right: 2rem;
+    width: 400px;
+}
+
+form .fieldset .overview h3 {
+    margin: 0;
+}
+
+form .fieldset section {
+    width: 100%;
+}
+
+form .actions {
+    display: flex;
+    justify-content: flex-end;
+}
