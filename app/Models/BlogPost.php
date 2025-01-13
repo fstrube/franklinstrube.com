@@ -4,7 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use League\CommonMark\CommonMarkConverter;
+use League\CommonMark\Extension\Attributes\AttributesExtension;
+use League\CommonMark\GithubFlavoredMarkdownConverter;
 
 class BlogPost extends Model
 {
@@ -79,7 +80,9 @@ class BlogPost extends Model
      */
     public function getHtmlAttribute()
     {
-        $converter = new CommonMarkConverter;
+        $converter = new GithubFlavoredMarkdownConverter;
+
+        $converter->getEnvironment()->addExtension(new AttributesExtension());
 
         return $converter->convert($this->content);
     }
