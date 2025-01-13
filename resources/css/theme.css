@@ -135,6 +135,8 @@ html, body { background: #F6F6F0; font-family: 'Open Sans', sans-serif; font-siz
 .single .main .tags a, .single .main .tags span { color: #459; display: inline-block; font-weight: normal; line-height: 1; margin: auto 8px auto auto; padding: 0; text-decoration: none; -webkit-transition: background-color 0.2s; }
 .single .main .tags a:hover { background-color: #cdf; -webkit-transition: background-color 0.2s; }
 .single .main img { display: block; margin: 1rem auto; }
+.single .main img.left { float: left; margin-right: 1rem; }
+.single .main img.right { float: right; margin-left: 1rem; }
 .single .main .nav-single { border-top: solid 1px #c6c6c0; margin: 50px 0; }
 .single .main .nav-single:before { background: #f6f6f0; color: #c6c6c0; content: '#'; clear: left; display: block; font-size: 20px; line-height: 1; margin: -10px auto 20px; text-align: center; width: 30px; }
 .single .main .nav-single .nav-previous { float: left; }
