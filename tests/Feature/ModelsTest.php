@@ -8,7 +8,6 @@ use Tests\TestCase;
 
 class ModelsTest extends TestCase
 {
-
     public function test_blog_posts(): void
     {
         BlogPost::factory()->create();
