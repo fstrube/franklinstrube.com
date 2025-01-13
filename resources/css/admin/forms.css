@@ -68,25 +68,25 @@ button.primary:focus {
     outline: none;
 }
 
-form .fieldset {
+.fieldset {
     display: flex;
     margin: 0 0 2rem;
 }
 
-form .fieldset .overview {
+.fieldset .overview {
     margin-right: 2rem;
     width: 400px;
 }
 
-form .fieldset .overview h3 {
+.fieldset .overview h3 {
     margin: 0;
 }
 
-form .fieldset section {
+.fieldset section {
     width: 100%;
 }
 
-form .actions {
+.actions {
     display: flex;
     justify-content: flex-end;
 }

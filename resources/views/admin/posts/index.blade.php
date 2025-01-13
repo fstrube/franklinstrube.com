@@ -2,7 +2,7 @@
 
 @section('title', 'Blog Posts')
 
-@section('body.class', 'admin posts')
+@section('body.class', 'admin posts index')
 
 @section('sidebar')
     @include('admin.sidebar')

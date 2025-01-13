@@ -1,11 +1,13 @@
-form {
-    margin-top: 1rem;
-}
+.posts.edit {
+    form {
+        margin-top: 1rem;
+    }
 
-img {
-    max-width: 100%;
-}
+    img {
+        max-width: 100%;
+    }
 
-.labeled-input label {
-    color: #999999;
+    .labeled-input label {
+        color: #999999;
+    }
 }
