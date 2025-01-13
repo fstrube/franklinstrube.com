@@ -11,7 +11,7 @@
         <link rel="icon" href="/favicon.ico">
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,700|Yanone+Kaffeesatz:400,700,300" type="text/css" />
+        @include('partials.fonts')
 
         <!-- Styles / Scripts -->
         @vite(['resources/css/admin.css', 'resources/js/admin.js'])

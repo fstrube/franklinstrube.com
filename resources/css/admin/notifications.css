@@ -1,0 +1,41 @@
+.notifications {
+    position: fixed;
+    right: 5rem;
+    top: 1rem;
+    width: 300px;
+}
+
+.notifications .notification {
+    background-color: rgba(30, 30, 30, 0.75);
+    border: solid 1px rgba(30, 30, 30, 0.75);
+    border-radius: 10px;
+    color: #ffffff;
+    display: flex;
+    margin: 0 0 1rem;
+    padding: 1rem;
+}
+
+.notifications .notification button {
+    background-color: transparent;
+    border: none;
+    color: inherit;
+    display: flex;
+    margin: 0 0 0 auto;
+    padding: 0;
+}
+
+.notifications .notification button:focus {
+    outline-color: currentColor;
+}
+
+.notifications .notification[data-type="success"] {
+    background-color: rgba(200, 240, 200, 0.75);
+    border-color: #67a767;
+    color: #67a767;
+}
+
+.notifications .notification[data-type="error"] {
+    background-color: rgba(240, 200, 200, 0.75);
+    border-color: #a76767;
+    color: #a76767;
+}

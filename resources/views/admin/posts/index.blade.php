@@ -11,7 +11,15 @@
 @section('main')
     <header>
         <h1>Blog Posts</h1>
+        <ul class="actions">
+            <li><a href="{{ route('admin.posts.create') }}">New Post</a></li>
+        </ul>
     </header>
+
+    <form action="" class="search" method="GET">
+        <label for="search">Search</label>
+        <input id="search" name="q" type="text" value="{{ request('q', '') }}" />
+    </form>
 
     <x-grid :data="$posts" paginated>
         <x-slot:headers>
@@ -39,7 +47,11 @@
                     @@endforelse
                 </td>
                 <td>
+                    @@if($item->published_at)
                     <time datetime="@{{ $item->published_at->format('c') }}" title="@{{ $item->published_at->format('F j, Y \a\t g:i A') }}">@{{ $item->published_at->diffForHumans() }}</time>
+                    @@else
+                    <i class="muted">Never</i>
+                    @@endif
                 </td>
                 <td>
                     <time datetime="@{{ $item->created_at->format('c') }}" title="@{{ $item->created_at->format('F j, Y \a\t g:i A') }}">@{{ $item->created_at->diffForHumans() }}</time>

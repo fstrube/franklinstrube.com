@@ -11,7 +11,7 @@
         <link rel="icon" href="/favicon.ico">
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,500italic,600italic,700italic,400,300,500,600,700|Yanone+Kaffeesatz:400,700,300" type="text/css" />
+        @include('partials.fonts')
 
         <!-- Styles / Scripts -->
         @vite(['resources/css/admin.css', 'resources/js/admin.js'])
@@ -23,5 +23,15 @@
         <main>
             @yield('main')
         </main>
+        <div class="notifications">
+            @if (session()->has('notification'))
+            <div class="notification" data-type="{{ session('notification.type', 'notice') }}" data-dismiss="{{ session('notification.dismiss', 1500) }}">{{ session('notification.message') }}</div>
+            @endif
+            @if(session()->has('errors'))
+            @foreach(session('errors')->all() as $error)
+            <div class="notification" data-type="error">{{ $error }}</div>
+            @endforeach
+            @endif
+        </div>
     </body>
 </html>

@@ -3,13 +3,13 @@
 namespace App\View\Components;
 
 use Closure;
-use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
 class Grid extends Component
 {
     public $data;
+
     public $paginated;
 
     /**

@@ -1,3 +1,21 @@
+.posts .search {
+    align-items: center;
+    /* background-color: #ffffff;
+    border: solid #f0f0f0 1px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35);; */
+    display: flex;
+    padding: 0.5rem 0;
+}
+
+.posts .search label {
+    margin-right: 0.5rem;
+}
+
+.posts .search input {
+    margin: 0;
+}
+
 .posts .grid .url {
     display: flex;
     font-size: 0.8rem;

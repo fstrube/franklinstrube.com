@@ -2,7 +2,10 @@ form {
     margin-top: 1rem;
 }
 
-textarea {
-    max-height: 600px;
-    min-height: 300px;
+img {
+    max-width: 100%;
+}
+
+.labeled-input label {
+    color: #999999;
 }

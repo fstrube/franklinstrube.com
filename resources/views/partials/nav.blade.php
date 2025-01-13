@@ -1,6 +1,6 @@
 <ul class="navigation">
-    <li class="menu-item {{ request()->routeIs('home') ? 'current-menu-item' : '' }}">
-        <a href="/">Home</a>
+    <li class="menu-item {{ request()->routeIs('home') || request()->routeIs('blog.*') ? 'current-menu-item' : '' }}">
+        <a href="/">Blog</a>
     </li>
     <li class="menu-item {{ request()->routeIs('projects') ? 'current-menu-item' : '' }}">
         <a href="/projects">Projects</a>

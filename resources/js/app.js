@@ -1,4 +1,6 @@
 import './bootstrap';
+import hljs from 'highlight.js';
+import 'highlight.js/styles/a11y-dark.css';
 
 $(function() {
     $("#header .toggle-navigation").click(function(el) {
@@ -16,4 +18,6 @@ $(function() {
 
         return false;
     });
+
+    hljs.highlightAll();
 });

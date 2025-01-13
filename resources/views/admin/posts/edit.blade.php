@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', $post->title . ' &raquo; Edit')
+@section('title', 'Edit: ' . $post->title)
 
 @section('body.class', 'admin posts edit')
 
@@ -12,8 +12,10 @@
     <header>
         <h1>Edit: {{ $post->title }}</h1>
     </header>
-    <form action="{{ route('admin.posts.update', $post) }}" method="POST">
+    <form action="{{ $post->exists ? route('admin.posts.update', $post) : route('admin.posts.store') }}" method="POST" enctype="multipart/form-data">
+        @if($post->exists)
         @method('PUT')
+        @endif
         @csrf
         <div class="fieldset">
             <div class="overview">
@@ -26,12 +28,12 @@
                 
                 <label for="post-url">URL</label>
                 <span class="labeled-input">
-                    <label for="post-url">{{ url('') }}/</label>
-                    <input id="post-url" name="slug" value="{{ old('url', $post->slug) }}">
+                    <label for="post-url">{{ url('posts') }}/</label>
+                    <input id="post-url" name="slug" value="{{ old('slug', $post->slug) }}">
                 </span>
 
                 <label for="post-tags">Tags</label>
-                <span class="tags-input" data-tags="{{ $post->tags->map->name }}" data-name="tags">
+                <span class="tags-input" data-tags="{{ json_encode(old('tags', $post->tags->map->name)) }}" data-id="post-tags" data-name="tags">
                     <span contenteditable placeholder="Type a comma-separated list of tags..."></span>
                 </span>
             </section>
@@ -39,10 +41,20 @@
         <div class="fieldset">
             <div class="overview">
                 <h3>Content</h3>
-                <p>The content for your blog post.</p>
+                <p>The content of your blog post.</p>
             </div>
             <section>
-                <div class="code-editor" data-name="content" data-value="{{ $post->content }}"></div>
+                <label for="post-image">Featured Image</label>
+                @if($post->image)
+                <img src="{{ Storage::url($post->image) }}" />
+                @endif
+                <input accept="image/*" id="post-image" name="image" type="file">
+
+                <label for="post-excerpt">Excerpt</label>
+                <textarea id="post-excerpt" name="excerpt" rows="5">{{ old('excerpt', $post->getAttributes()['excerpt'] ?? '') }}</textarea>
+
+                <label for="post-content">Content</label>
+                <div class="code-editor" data-id="post-content" data-name="content" data-token="{{ csrf_token() }}" data-upload-url="{{ route('admin.posts.upload', $post->id ?? 'new') }}" data-value="{{ old('content', $post->content) }}"></div>
             </section>
         </div>
         <div class="actions">

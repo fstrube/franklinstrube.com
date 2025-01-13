@@ -49,6 +49,7 @@ nav ul {
     background-color: #ffffff;
     border-radius: 5px;
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.35);
+    cursor: default;
     display: none;
     flex-direction: column;
     min-width: 200px;
@@ -104,6 +105,11 @@ nav ul {
 
 .admin header h1 {
     margin: 0;
+}
+
+.admin header .actions {
+    list-style-type: none;
+    padding: 0;
 }
 
 .admin main {

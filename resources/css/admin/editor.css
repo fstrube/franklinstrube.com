@@ -1,0 +1,13 @@
+.cm-editor {
+    border: solid 1px #666666;
+    border-radius: 5px;
+    display: block;
+    margin-bottom: 1.5rem;
+    padding: 0.5rem;
+    width: 100%;
+}
+
+.cm-editor.cm-focused {
+    outline: solid 1px #999999;
+    outline-offset: 2px;
+}

@@ -9,6 +9,7 @@
 @import './admin/icons.css';
 @import './admin/tags.css';
 @import './admin/editor.css';
+@import './admin/notifications.css';
 
 @import './admin/pages/posts.index.css';
 @import './admin/pages/posts.edit.css';

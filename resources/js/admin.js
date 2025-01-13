@@ -22,41 +22,82 @@ $(function() {
         });
     });
 
+    // Initialize notifications
+    $('.notifications .notification').each(function () {
+        const $notification = $(this);
+        const dismiss = $notification.data('dismiss');
+
+        if (dismiss) {
+            setTimeout(() => {
+                $notification.fadeOut();
+            }, $notification.data('dismiss') || 1500);
+        } else {
+            $notification.append(`<button><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" /></svg></button>`);
+        }
+
+        $notification.on('click', 'button', (e) => $notification.fadeOut());
+    });
+
+    // Initialize code editors
     $('.code-editor').each(function () {
-        let view = new EditorView({
+        const $editor = $(this);
+        const $form = $editor.closest('form');
+        const editor = new EditorView({
             parent: this,
-            doc: $(this).data('value'),
+            doc: $editor.data('value'),
             extensions: [
                 markdown(),
                 syntaxHighlighting(defaultHighlightStyle),
+                EditorView.lineWrapping,
+                EditorView.contentAttributes.of({ id: $editor.data('id') })
             ],
-            lineWrapping: true,
         });
 
-        // console.log('turd');
-        // const editor = createWysimark(this, {
-        //     initialMarkdown: $(this).data('value'),
-        //     placeholder: 'Start typing ...'
-        // });
+        $editor.on('drop', (e) => {
+            const file = e.originalEvent.dataTransfer?.files[0] || null;
+            const data = new FormData();
+
+            data.append('_token', $editor.data('token'));
+
+            if (file) {
+                data.append('file', file, file.name);
+
+                $.ajax(
+                    { 
+                        url: $editor.data('upload-url'), 
+                        data,
+                        processData: false,
+                        contentType: false,
+                        method: 'POST' 
+                    }
+                )
+                    .then(response => {
+                        editor.dispatch({
+                            changes: {
+                                from: editor.viewState.state.selection?.ranges[0]?.from || 0,
+                                to: editor.viewState.state.selection?.ranges[0]?.to || 0,
+                                insert: `![${file.name}](${response.url})`,
+                            },
+                        });
+                    });
+            }
+        });
+
+        $form.find(`label[for="${$editor.data('id')}"]`).on('click', () => {
+            editor.focus();
+        });
+
+        $form.on('submit', (e) => {
+            const $input = $form.find(`input[name="${$editor.data('name')}"]`);
+            const doc = editor.state.doc.toString();
+
+            if ($input.length) {
+                $input.val(doc);
+            } else {
+                $form.append($(`<input type="hidden" name="${$editor.data('name')}">`).val(doc));
+            }
+        });
     });
-
-    // // Auto-size textareas
-    // const autosize = (element) => {
-    //     $(element).css('height', 'auto');
-
-    //     const { scrollHeight, clientHeight } = element;
-
-    //     $(element).css('height', `calc(${scrollHeight}px + 1rem)`);
-    // }
-
-    // $(document).on('input', 'textarea[data-auto-height]', (e) => autosize(e.currentTarget));
-
-    // // Initialize textareas
-    // $('textarea[data-auto-height]').each(function () {
-    //     const $textarea = $(this);
-
-    //     autosize(this);
-    // });
 
     // Initialize tag inputs
     $('.tags-input').each(function () {
@@ -71,6 +112,10 @@ $(function() {
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" class="size-6"><path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" /></svg>
                 </span>`;
         }
+
+        $this.closest('form').find(`label[for="${$this.data('id')}"]`).on('click', () => {
+            $input.focus();
+        });
 
         $this.data('tags').forEach(tag => {
             const $tag = $this.find('.tag').last();
@@ -133,6 +178,14 @@ $(function() {
 
             if (e.originalEvent.key === ',' || e.originalEvent.key === 'Enter') {
                 e.preventDefault();
+
+                if (!$input.text()) {
+                    if (e.originalEvent.key === 'Enter') {
+                        $input.closest('form').trigger('submit');
+                    }
+
+                    return;
+                }
 
                 const $tag = $this.find('.tag').last();
                 const tag = template($input.text());

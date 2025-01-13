@@ -32,7 +32,7 @@
     width: 100%;
 }
 
-.tags-input:focus {
+.tags-input:focus-within {
     outline: solid 1px #999999;
     outline-offset: 2px;
 }

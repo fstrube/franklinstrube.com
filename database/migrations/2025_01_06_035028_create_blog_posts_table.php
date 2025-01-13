@@ -16,6 +16,8 @@ return new class extends Migration
             $table->foreignId('author_id')->nullable()->references('id')->on('users')->onDelete('set null');
             $table->string('title');
             $table->string('slug')->unique();
+            $table->string('image')->nullable();
+            $table->text('excerpt')->nullable();
             $table->text('content');
             $table->timestamp('published_at')->nullable();
             $table->timestamps();

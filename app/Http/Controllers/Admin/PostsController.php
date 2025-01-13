@@ -2,18 +2,29 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Actions;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UpdateBlogPost;
+use App\Http\Requests\UploadFile;
 use App\Models\BlogPost;
-use App\Models\Tag;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class PostsController extends Controller
 {
     /**
+     * GET /admin/posts/create
+     */
+    public function create()
+    {
+        return view('admin.posts.edit', ['post' => new BlogPost]);
+    }
+
+    /**
      * GET /admin/posts/{post}/edit
      *
-     * @param \App\Models\BlogPost $post
+     *
+     * @return \Illuminate\View\View
      */
     public function edit(BlogPost $post)
     {
@@ -23,42 +34,85 @@ class PostsController extends Controller
     /**
      * GET /admin/posts
      *
-     * @param \Illuminate\Http\Request $request
+     *
+     * @return \Illuminate\View\View
      */
     public function index(Request $request)
     {
-        $query = BlogPost::query()->orderBy('created_at', 'desc');
+        $query = BlogPost::query()->with('tags')->orderBy('published_at', 'desc');
         $query->search($request->q);
 
-        return view('admin.posts.index', [
-            'posts' => $query->paginate(),
-        ]);
+        return view(
+            'admin.posts.index',
+            [
+                'posts' => $query->paginate(),
+            ]
+        );
+    }
+
+    /**
+     * POST /admin/posts
+     *
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function store(UpdateBlogPost $request)
+    {
+        if ($post = (new Actions\UpdateBlogPost)->update(new BlogPost, $request)) {
+            session()->flash(
+                'notification',
+                [
+                    'type' => 'success',
+                    'message' => 'Saved!',
+                ]
+            );
+        }
+
+        return response()->redirectToRoute('admin.posts.edit', $post);
     }
 
     /**
      * PUT /admin/posts/{post}
-     * 
-     * @param \Illuminate\Http\Request $request
+     *
+     *
+     * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, BlogPost $post)
+    public function update(UpdateBlogPost $request, BlogPost $post)
     {
-        DB::transaction(function () use ($request, $post) {
-            $post->title = $request->title;
-            $post->slug = $request->slug;
-            $post->content = $request->content;
-
-            $post->save();
-
-            $tags = collect($request->tags)->sort();
-
-            Tag::insertOrIgnore($tags->map(function ($tagName) {
-                return ['name' => $tagName];
-            })->values()->all());
-
-            $query = Tag::whereIn('name', $request->tags)->orderBy('name', 'asc');
-            $post->tags()->sync($query->pluck('id'));
-        });
+        if ((new Actions\UpdateBlogPost)->update($post, $request)) {
+            session()->flash(
+                'notification',
+                [
+                    'type' => 'success',
+                    'message' => 'Saved!',
+                ]
+            );
+        }
 
         return response()->redirectToRoute('admin.posts.edit', $post);
+    }
+
+    /**
+     * POST /admin/posts/{post}/upload
+     *
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function upload(UploadFile $request, BlogPost $post)
+    {
+        $path = $request->file->storePublicly(
+            'posts/'.$post->id,
+            [
+                'disk' => 'public',
+            ]
+        );
+
+        return response(
+            [
+                'name' => $request->file->getClientOriginalName(),
+                'path' => $path,
+                'url' => Storage::url($path),
+            ]
+        );
     }
 }
