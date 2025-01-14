@@ -21,8 +21,14 @@
         display: flex;
         font-size: 0.8rem;
         margin-top: 0.25rem;
-        max-width: 300px;
+        max-width: 200px;
         white-space: nowrap;
+    }
+
+    @media (width >= 765px) {
+        .grid .url {
+            max-width: 300px;
+        }
     }
 
     .grid .url strong {

@@ -119,3 +119,42 @@
         text-decoration: none;
     }
 }
+
+@media (width <= 500px) {
+    .pagination {
+        display: flex;
+    }
+
+    .pagination a,
+    .pagination span {
+        display: block;
+        text-align: center;
+        width: 100%;
+    }
+
+    .grid thead {
+        display: none;
+    }
+
+    .grid tr {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .grid tr th,
+    .grid tr td {
+        display: flex;
+    }
+
+    .grid tr th::before,
+    .grid tr td::before {
+        content: attr(data-title);
+        display: inline-block;
+        width: 30%;
+    }
+
+    .grid tr th:first-child,
+    .grid tr td:first-child {
+        padding: 0.5rem;
+    }
+}
