@@ -12,93 +12,110 @@ nav ul {
 }
 
 .admin {
-    align-items: stretch;
     background-color: #e7e7e7;
-    display: flex;
-    padding-right: 4rem;
 
-    /* Admin sidebar */
-    aside {
-        margin-right: 1rem;
-        min-width: 200px;
-        width: 10vw;
-    }
+    .sidebar {
+        background: #ffffff;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
+        height: 4rem;
+        inset: 0 0 auto 0;
+        position: fixed;
 
-    /* Admin sidebar - Auth section */
-    aside .auth {
-        align-items: center;
-        cursor: pointer;
-        display: flex;
-        flex-wrap: wrap;
-        margin: 1rem;
-        position: relative;
-    }
+        a {
+            align-items: center;
+            color: inherit;
+            display: flex;
+            line-height: 1;
+            padding: 0.5rem;
+            text-decoration: none;
+        }
 
-    aside .auth img {
-        border-radius: 999px;
-        width: 48px;
-    }
+        ul li a:hover {
+            background-color: rgba(0, 0, 0, 0.15);
+        }
 
-    aside .auth > span {
-        align-self: center;
-        margin-left: 1rem;
-    }
+        /* Admin sidebar - Auth section */
+        .auth {
+            align-items: center;
+            display: flex;
+            flex-direction: row-reverse;
+            inset: 0 0 auto auto;
+            padding: 0.5rem;
+            position: absolute;
+        }
 
-    aside .auth ul {
-        background-color: #ffffff;
-        border-radius: 5px;
-        box-shadow: 0 3px 5px rgba(0, 0, 0, 0.35);
-        cursor: default;
-        display: none;
-        flex-direction: column;
-        min-width: 200px;
-        padding: 0.5rem;
-        position: absolute;
-        top: calc(100% + 0.5rem);
-    }
+        .auth img {
+            cursor: pointer;
+            border-radius: 999px;
+            margin-left: 1rem;
+            width: 3rem;
+        }
 
-    aside .auth[data-open] ul {
-        display: flex;
-    }
+        .auth > span {
+            align-self: center;
+            margin-left: 1rem;
+        }
 
-    aside .auth > ul li a {
-        align-items: center;
-        color: inherit;
-        display: flex;
-        line-height: 1;
-        padding: 0.5rem;
-        text-decoration: none;
-    }
+        .auth > ul {
+            background-color: #ffffff;
+            border-radius: 5px;
+            box-shadow: 0 3px 5px rgba(0, 0, 0, 0.35);
+            cursor: default;
+            display: none;
+            flex-direction: column;
+            min-width: 200px;
+            padding: 0.5rem;
+            position: absolute;
+            top: calc(100% + 0.5rem);
+        }
 
-    /* Admin sidebar - Nav list */
-    aside nav > ul {
-        border-top: solid 1px #a6a6a6;
-        margin: 1rem;
-        padding: 0.5rem 0;
-    }
+        .auth[data-open] > ul {
+            display: flex;
+            position: absolute;
+            right: 0.5rem;
+        }
 
-    aside nav > ul li a {
-        align-items: center;
-        color: inherit;
-        display: flex;
-        line-height: 1;
-        padding: 0.5rem;
-        text-decoration: none;
-    }
+        a svg {
+            margin-right: 0.5rem;
+        }
 
-    aside nav ul li a[data-active] {
-        background-color: rgba(0, 0, 0, 0.1);
-    }
+        /* Admin sidebar - Pages */
+        .pages > a {
+            display: inline-block;
+            padding: 0.5rem;
 
-    aside nav ul li a:hover {
-        background-color: rgba(0, 0, 0, 0.15);
-    }
+            svg {
+                width: 3rem;
+            }
+        }
 
-    aside nav ul li a svg {
-        margin-right: 0.5rem;
+        .pages ul {
+            background: #ffffff;
+            box-shadow: 0 6px 5px rgba(0, 0, 0, 0.35);
+            display: none;
+            inset: 3rem auto -1rem -1rem;
+            margin: 1rem;
+            min-width: 200px;
+            padding: 0.5rem 0;
+            position: fixed;
+        }
+
+        .pages[data-open] > ul {
+            display: block;
+        }
+
+        .pages ul li a[data-active] {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+
+        .pages ul li a svg {
+            margin-right: 0.5rem;
+        }
     }
 
     header {
+        justify-content: space-between;
+        display: flex;
         padding: 1.5rem 1rem 0 0;
     }
 
@@ -113,7 +130,7 @@ nav ul {
 
     main {
         flex-grow: 1;
-        padding: 0 1rem 1rem 0;
+        padding: 4rem 1rem 1rem 1rem;
     }
 
     main section {
@@ -121,6 +138,7 @@ nav ul {
         border: solid #f0f0f0 1px;
         border-radius: 10px;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35);
+        margin: 1rem 0;
         padding: 1rem;
     }
 

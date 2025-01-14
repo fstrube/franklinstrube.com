@@ -2,7 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <title>
             @yield('title') &laquo; Admin &laquo; #!/bin/strube
@@ -17,7 +17,7 @@
         @vite(['resources/css/admin.css', 'resources/js/admin.js'])
     </head>
     <body class="@yield('body.class')">
-        <aside>
+        <aside class="sidebar">
             @yield('sidebar')
         </aside>
         <main>

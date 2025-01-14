@@ -22,6 +22,19 @@ $(function() {
         });
     });
 
+    $(document).on('click', '[data-action="toggle-nav"]', (e) => {
+        e.preventDefault();
+
+        const $target = $(e.currentTarget);
+        const $nav = $target.closest('.pages');
+
+        if ($nav.is('[data-open]')) {
+            $nav.removeAttr('data-open');
+        } else {
+            $nav.attr('data-open', true);
+        }
+    });
+
     // Initialize notifications
     $('.notifications .notification').each(function () {
         const $notification = $(this);

@@ -17,24 +17,29 @@
             </li>
         </ul>
     </div>
-    <ul>
-        <li>
-            <a href="{{ route('admin.home') }}" {{ request()->routeIs('admin.home') ? 'data-active' : '' }}>
-                @include('icons.home', ['title' => 'Home']) 
-                <span class="hide-on-mobile">Home</span>
-            </a>
-        </li>
-        <li>
-            <a href="{{ route('admin.posts.index') }}" {{ request()->routeIs('admin.posts.*') ? 'data-active' : '' }}>
-                @include('icons.document-text', ['title' => 'Blog Posts']) 
-                <span class="hide-on-mobile">Blog Posts</span>
-            </a>
-        </li>
-        <li>
-            <a href="{{ route('admin.settings') }}" {{ request()->routeIs('admin.settings') ? 'data-active' : '' }}>
-                @include('icons.cog-8-tooth', ['title' => 'Settings']) 
-                <span class="hide-on-mobile">Settings</span>
-            </a>
-        </li>
-    </ul>
+    <div class="pages">
+        <a data-action="toggle-nav" href="#">
+            @include('icons.bars-3')
+        </a>
+        <ul>
+            <li>
+                <a href="{{ route('admin.home') }}" {{ request()->routeIs('admin.home') ? 'data-active' : '' }}>
+                    @include('icons.home', ['title' => 'Home'])
+                    Home
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('admin.posts.index') }}" {{ request()->routeIs('admin.posts.*') ? 'data-active' : '' }}>
+                    @include('icons.document-text', ['title' => 'Blog Posts'])
+                    Blog Posts
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('admin.settings') }}" {{ request()->routeIs('admin.settings') ? 'data-active' : '' }}>
+                    @include('icons.cog-8-tooth', ['title' => 'Settings'])
+                    Settings
+                </a>
+            </li>
+        </ul>
+    </div>
 </nav>
