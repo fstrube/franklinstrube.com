@@ -4,7 +4,8 @@
     flex-direction: column;
 
     .pagination a,
-    .pagination span {
+    .pagination span,
+    .pagination select {
         background-color: #ffffff;
         border: solid 1px #c7c7c7;
         border-radius: 5px;
@@ -49,7 +50,7 @@
     }
 
     tbody tr:nth-child(even) td {
-        background-color: #e7e7e7;
+        background-color: #f7f7f7;
     }
 
     tbody td {
@@ -127,9 +128,12 @@
 
     .pagination a,
     .pagination span {
-        display: block;
-        text-align: center;
-        width: 100%;
+    }
+
+    .pagination select {
+        height: 100%;
+        flex-grow: 1;
+        margin: 0 0.5rem;
     }
 
     .grid thead {
@@ -156,5 +160,27 @@
     .grid tr th:first-child,
     .grid tr td:first-child {
         padding: 0.5rem;
+    }
+
+    /* Top left cell */
+    tbody tr:first-child td:first-child {
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+
+    /* Top right cell */
+    tbody tr:first-child td:last-child {
+        border-top-right-radius: 0;
+    }
+
+    /* Bottom right cell */
+    tbody tr:last-child td:last-child {
+        border-bottom-right-radius: 10px;
+        border-bottom-left-radius: 10px;
+    }
+
+    /* Bottom left cell */
+    tbody tr:last-child td:first-child {
+        border-bottom-left-radius: 0;
     }
 }
