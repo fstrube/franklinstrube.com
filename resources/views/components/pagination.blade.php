@@ -12,7 +12,7 @@
         <x-pagination-link :link="$paginator->linkCollection()->first()" />
         <select data-action="goto-page">
             @foreach(range(1, $paginator->lastPage()) as $page)
-            <option @selected($page === $paginator->currentPage())>{{ $page }}</option>
+            <option @selected($page === $paginator->currentPage()) value="{{ $paginator->url($page) }}">{{ $page }}</option>
             @endforeach
         </select>
         <x-pagination-link :link="$paginator->linkCollection()->last()" />

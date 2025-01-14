@@ -4,6 +4,9 @@ import { markdown } from '@codemirror/lang-markdown';
 import { syntaxHighlighting, defaultHighlightStyle } from '@codemirror/language';
 
 $(function() {
+    $(document).on('change', '[data-action="goto-page"]', (e) => {
+        window.location = $(e.currentTarget).val();
+    });
     $(document).on('click', '[data-expandable]', (e) => {
         const $expandable = $(e.currentTarget);
 
@@ -76,12 +79,12 @@ $(function() {
                 data.append('file', file, file.name);
 
                 $.ajax(
-                    { 
-                        url: $editor.data('upload-url'), 
+                    {
+                        url: $editor.data('upload-url'),
                         data,
                         processData: false,
                         contentType: false,
-                        method: 'POST' 
+                        method: 'POST'
                     }
                 )
                     .then(response => {
