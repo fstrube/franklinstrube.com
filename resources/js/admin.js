@@ -189,6 +189,23 @@ $(function() {
             }
         });
 
+        $input.on('input', (e) => {
+            const input = e.target;
+            const selection = document.getSelection();
+            const range = selection.getRangeAt(0);
+            const { inputType } = e.originalEvent;
+
+            if (inputType !== 'insertText') {
+                return;
+            }
+
+            if (data === ',') {
+                input.innerHTML = '';
+            }
+
+            input.innerHTML = input.innerText.replace(/[\s-]+/g, '-');
+        });
+
         $input.on('keydown', (e) => {
             const input = $input.get(0);
             const selection = document.getSelection();
