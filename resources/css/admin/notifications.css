@@ -1,9 +1,13 @@
 .notifications {
     position: fixed;
-    right: 5rem;
+    right: 1rem;
     top: 5rem;
     width: 300px;
     z-index: 1000;
+
+    @media (width > 764px) {
+        right: 5rem;
+    }
 
     .notification {
         background-color: rgba(30, 30, 30, 0.75);
@@ -29,13 +33,13 @@
     }
 
     .notification[data-type="success"] {
-        background-color: rgba(200, 240, 200, 0.75);
+        background-color: rgba(200, 240, 200, 0.95);
         border-color: #67a767;
         color: #67a767;
     }
 
     .notification[data-type="error"] {
-        background-color: rgba(240, 200, 200, 0.75);
+        background-color: rgba(240, 200, 200, 0.95);
         border-color: #a76767;
         color: #a76767;
     }
