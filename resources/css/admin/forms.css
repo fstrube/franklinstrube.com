@@ -70,12 +70,19 @@ button.primary:focus {
 
 .fieldset {
     display: flex;
-    margin: 0 0 2rem;
+    flex-direction: column;
+    margin: 0 0 1rem;
+
+    @media (width > 764px) {
+        flex-direction: row;
+    }
 }
 
 .fieldset .overview {
-    margin-right: 2rem;
-    width: 400px;
+    @media (width > 764px) {
+        margin-right: 2rem;
+        width: 400px;
+    }
 }
 
 .fieldset .overview h3 {
