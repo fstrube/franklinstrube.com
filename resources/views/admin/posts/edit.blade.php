@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Edit: ' . $post->title)
+@section('title', $post->exists ? 'Edit: ' . $post->title : 'New Post')
 
 @section('body.class', 'admin posts edit')
 
@@ -10,7 +10,11 @@
 
 @section('main')
     <header>
+        @if($post->exists)
         <h1>Edit: {{ $post->title }}</h1>
+        @else
+        <h1>New Post</h1>
+        @endif
     </header>
     <form action="{{ $post->exists ? route('admin.posts.update', $post) : route('admin.posts.store') }}" method="POST" enctype="multipart/form-data">
         @if($post->exists)
@@ -50,11 +54,11 @@
                 @endif
                 <input accept="image/*" id="post-image" name="image" type="file">
 
-                <label for="post-excerpt">Excerpt</label>
-                <textarea id="post-excerpt" name="excerpt" rows="5">{{ old('excerpt', $post->getAttributes()['excerpt'] ?? '') }}</textarea>
-
                 <label for="post-content">Content</label>
                 <div class="code-editor" data-id="post-content" data-name="content" data-token="{{ csrf_token() }}" data-upload-url="{{ route('admin.posts.upload', $post->id ?? 'new') }}" data-value="{{ old('content', $post->content) }}"></div>
+
+                <label for="post-excerpt">Excerpt</label>
+                <textarea id="post-excerpt" name="excerpt" rows="5">{{ old('excerpt', $post->getAttributes()['excerpt'] ?? '') }}</textarea>
             </section>
         </div>
         <div class="actions">
