@@ -40,6 +40,20 @@ class BlogPost extends Model
     ];
 
     /**
+     * Get the converter to use for Markdown to HTML.
+     *
+     * @return \League\CommonMark\GithubFlavoredMarkdownConverter
+     */
+    protected function getMarkdownConverter()
+    {
+        $converter = new GithubFlavoredMarkdownConverter;
+
+        $converter->getEnvironment()->addExtension(new AttributesExtension());
+
+        return $converter;
+    }
+
+    /**
      * Relationship to tags. Polymorphic.
      *
      * @return \Illuminate\Database\Eloquent\Relations\MorphToMany
@@ -80,11 +94,7 @@ class BlogPost extends Model
      */
     public function getHtmlAttribute()
     {
-        $converter = new GithubFlavoredMarkdownConverter;
-
-        $converter->getEnvironment()->addExtension(new AttributesExtension());
-
-        return $converter->convert($this->content);
+        return $this->getMarkdownConverter()->convert($this->content);
     }
 
     /**
