@@ -7,6 +7,7 @@ $(function() {
     $(document).on('change', '[data-action="goto-page"]', (e) => {
         window.location = $(e.currentTarget).val();
     });
+
     $(document).on('click', '[data-expandable]', (e) => {
         const $expandable = $(e.currentTarget);
 
