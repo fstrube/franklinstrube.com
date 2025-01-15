@@ -20,6 +20,7 @@ nav ul {
         height: 4rem;
         inset: 0 0 auto 0;
         position: fixed;
+        z-index: 999;
 
         a {
             align-items: center;
@@ -53,6 +54,7 @@ nav ul {
 
         .auth > span {
             align-self: center;
+            cursor: pointer;
             margin-left: 1rem;
         }
 
