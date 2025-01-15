@@ -1,8 +1,9 @@
 .notifications {
     position: fixed;
     right: 5rem;
-    top: 1rem;
+    top: 5rem;
     width: 300px;
+    z-index: 1000;
 
     .notification {
         background-color: rgba(30, 30, 30, 0.75);

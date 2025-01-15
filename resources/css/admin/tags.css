@@ -43,6 +43,7 @@
         flex-grow: 1;
         margin-bottom: 0.25rem;
         padding: 0.25rem;
+        white-space: pre;
         width: auto;
     }
 

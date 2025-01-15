@@ -192,31 +192,51 @@ $(function() {
         $input.on('input', (e) => {
             const input = e.target;
             const selection = document.getSelection();
-            const range = selection.getRangeAt(0);
-            const { inputType } = e.originalEvent;
+            const { endOffset, startOffset } = selection.getRangeAt(0);
+            const { data, inputType } = e.originalEvent;
+            const range = document.createRange();
+            let newStartOffset, textNode;
 
             if (inputType !== 'insertText') {
                 return;
             }
 
             if (data === ',') {
-                input.innerHTML = '';
+                const $tag = $this.find('.tag').last();
+                const tag = template($input.text().replace(/,$/g, ''));
+
+                if ($tag.length) {
+                    $tag.after(tag);
+                } else {
+                    $this.prepend(tag);
+                }
+
+                $input.text('');
+
+                $this.trigger('change');
+
+                return;
             }
 
-            input.innerHTML = input.innerText.replace(/[\s-]+/g, '-');
+            input.innerHTML = input.innerText.replace(/(\r?\n)+$/, '').replace(/[\s]/g, '-');
+
+            // Move cursor back to original position
+            textNode = input.childNodes[0];
+            newStartOffset = Math.min(textNode.nodeValue.length, startOffset);
+            selection.removeAllRanges();
+            range.setStart(textNode, newStartOffset);
+            range.setEnd(textNode, newStartOffset);
+            selection.addRange(range);
         });
 
         $input.on('keydown', (e) => {
-            const input = $input.get(0);
             const selection = document.getSelection();
 
-            if (e.originalEvent.key === ',' || e.originalEvent.key === 'Enter') {
+            if (e.originalEvent.key === 'Enter') {
                 e.preventDefault();
 
                 if (!$input.text()) {
-                    if (e.originalEvent.key === 'Enter') {
-                        $input.closest('form').trigger('submit');
-                    }
+                    $input.closest('form').trigger('submit');
 
                     return;
                 }
@@ -233,21 +253,6 @@ $(function() {
                 $input.text('');
 
                 $this.trigger('change');
-            }
-
-            if (e.originalEvent.key === ' ') {
-                e.preventDefault();
-
-                const input = $input.get(0);
-                const { startOffset, endOffset } = selection.getRangeAt(0);
-                const newValue = $input.text().substr(0, startOffset) + '-' + $input.text().substr(endOffset);
-                const range = document.createRange();
-
-                $input.text(newValue);
-                range.setStart(input.childNodes[0], startOffset + 1);
-                range.setEnd(input.childNodes[0], startOffset + 1);
-                selection.removeAllRanges();
-                selection.addRange(range);
             }
 
             if (e.originalEvent.key === 'Backspace' || e.originalEvent.key === 'ArrowLeft') {
