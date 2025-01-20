@@ -83,21 +83,27 @@ html, body { background: #F6F6F0; font-family: 'Open Sans', sans-serif; font-siz
 #header .toggle-navigation { border: none; display: none; }
 
 .sidebar { float: right; margin: 0 0 20px; padding: 120px 20px 20px 20px; width: 28%; }
-.sidebar .callout { border: solid 1px #ccc; margin: 0 0 40px 0; padding: 10px 20px 10px; }
-.sidebar .callout h3 { background: #da5956; box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); color: white; font-weight: normal; line-height: 2; margin: 0 -9px 10px -35px; padding: 0 15px; position: relative; text-transform: uppercase; z-index: 2; }
-.sidebar .callout h3:after { background:#ccc; border-right: solid 14px #ccc; border-bottom: solid 14px #f6f6f0; content: ''; display:block; height: 0; left: 0; top: 105%; position: absolute; width: 0; z-index: 1; }
+.sidebar .callout { border: solid 1px #ccc; margin: 0 0 40px 0; padding: 10px 20px 10px; position: relative; }
+.sidebar .callout:before { background: #da5956; box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); color: white; display: block; font-weight: normal; font-size: 1.17em; line-height: 2; margin: 0 -9px 10px -35px; padding: 0 15px; position: relative; text-transform: uppercase; z-index: 2; }
+.sidebar .callout:after { background:#ccc; border-right: solid 14px #ccc; border-bottom: solid 14px #f6f6f0; content: ''; display: block; height: 0; left: -15px; position: absolute; top: 48px; width: 0; z-index: 1; }
 .sidebar .callout time { color: #ccc; }
+.sidebar .callout a.more { background: #5676DA; color: white; display: block; float: right; font-size: 0.8em; line-height: 1em; margin: -0.5em 1em; padding: .5em .6em; position: relative; text-decoration: none; }
+.sidebar .callout a.more:after { border: solid transparent 10px; border-left-color: #5676da; border-top-width: 1em; border-bottom-width: 1em; content: ''; display: block; height: 0; position: absolute; left: 100%; top: 0px; width: 0; }
 
 /* alternative callout flag
 .sidebar .callout h3 { float: left; }
 .sidebar .callout h2, .sidebar .callout p, .sidebar .callout pre { clear: left; }
 /* */
 
-.sidebar .callout-snippet h3 { background: #e6b517; color: #2F4167; }
-.sidebar .callout-tweet h3 { background: #0095ea; }
+.sidebar .callout-aside:before { content: 'Protip'; }
+.sidebar .callout-snippet:before { background: #e6b517; color: #2F4167; content: 'Snippet'; }
+.sidebar .callout-status:before { background: #0095ea; content: 'Tweet';}
+/* Remove callout flag and border from ads */
+.sidebar .callout-ads { background: none; border: none; }
+.sidebar .callout-ads:before { display: none; }
+.sidebar .callout-ads:after { display: none; }
 /* Remove frame and background around Prism code area */
 .sidebar .callout-snippet pre { background: none; box-shadow: none; border: none; padding: 0 0 0.5em 0; }
-
 .main { margin-right: 32%; padding: 120px 20px; }
 
 .main a { color: #658BDC; }

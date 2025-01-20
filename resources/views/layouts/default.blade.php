@@ -27,7 +27,11 @@
             </header>
         </div>
         <div class="wrapper">
-            @yield('sidebar')
+            @hasSection('sidebar')
+                <div class="sidebar" role="sidebar">
+                    @yield('sidebar')
+                </div>
+            @endif
             <main>
                 @yield('content')
             </main>
