@@ -4,8 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use League\CommonMark\Extension\Attributes\AttributesExtension;
-use League\CommonMark\GithubFlavoredMarkdownConverter;
 
 class BlogPost extends Model
 {
@@ -38,20 +36,6 @@ class BlogPost extends Model
     public $casts = [
         'published_at' => 'datetime',
     ];
-
-    /**
-     * Get the converter to use for Markdown to HTML.
-     *
-     * @return \League\CommonMark\GithubFlavoredMarkdownConverter
-     */
-    protected function getMarkdownConverter()
-    {
-        $converter = new GithubFlavoredMarkdownConverter;
-
-        $converter->getEnvironment()->addExtension(new AttributesExtension());
-
-        return $converter;
-    }
 
     /**
      * Relationship to tags. Polymorphic.
@@ -94,7 +78,7 @@ class BlogPost extends Model
      */
     public function getHtmlAttribute()
     {
-        return $this->getMarkdownConverter()->convert($this->content);
+        return app('markdown')->convert($this->content);
     }
 
     /**
