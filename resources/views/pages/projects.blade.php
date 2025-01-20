@@ -9,7 +9,8 @@
         [
             'title' => 'Banjo',
             // 'image' => '/images/pages/scorecard.png',
-            'url' => route('projects.show', 'banjo'),
+            'url' => 'https://morevang.com/banjo',
+            'external' => true,
             'excerpt' => 'A PDF rendering engine and print automation platform.',
         ],
         [
@@ -25,7 +26,8 @@
         [
             'title' => 'Mythos',
             // 'image' => '/images/pages/scorecard.png',
-            'url' => route('projects.show', 'mythos'),
+            'url' => 'https://mythosplatform.com',
+            'external' => true,
             'excerpt' => 'A niche content management system and communications platform.',
         ],
         [
@@ -63,7 +65,7 @@
                     style="background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.75)), url({{ $project['image'] }});"
                     @endif
                 >
-                    <a href="{{ $project['url'] }}" title="{{ $project['title'] }}">
+                    <a href="{{ $project['url'] }}" title="{{ $project['title'] }}" {{ $project['external'] ?? null ? 'target="_blank"' : '' }}>
                         <h2>{{ $project['title'] }}</h2>
                     </a>
                 </div>

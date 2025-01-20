@@ -1,5 +1,7 @@
 @extends('layouts.default')
 
+@section('title', 'Scorecard')
+
 @section('body.class', 'single')
 
 @section('content')

@@ -1,11 +1,19 @@
 @extends('layouts.default')
 
+@section('title', 'SVG - Civilization II')
+
 @section('body.class', 'single')
 
 @section('content')
     <div role="main" class="main">
         <x-article title="SVG - Civilization II">
-![SVG - Civilization II Screenshot](/images/pages/civ_svg.jpg){ class="left" }
+<figure class="left">
+
+![SVG - Civilization II Screenshot](/images/pages/civ_svg.jpg)
+
+Screenshot of SVG rendering a Civilization II map.
+
+</figure>
 
 This prototype loads an HTML document that displays an interactive Scalable Vector Graphic (SVG) image. You are able to click on the different tiles of the map, which will move your blinking white cursor to the tile that you clicked. The game grid itself is loaded from the XML data below:
 

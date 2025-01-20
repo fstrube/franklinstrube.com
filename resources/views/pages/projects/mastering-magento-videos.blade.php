@@ -1,5 +1,7 @@
 @extends('layouts.default')
 
+@section('title', 'Video Course: Mastering Magento')
+
 @section('body.class', 'single')
 
 @section('content')
