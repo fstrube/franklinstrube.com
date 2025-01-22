@@ -21,7 +21,7 @@
         @method('PUT')
         @endif
         @csrf
-        <div class="fieldset">
+        <div class="fieldset" role="group">
             <div class="overview">
                 <h3>General Settings</h3>
                 <p>Edit your post's title, URL, and more.</p>
@@ -32,7 +32,7 @@
                 
                 <label for="post-url">URL</label>
                 <span class="labeled-input">
-                    <label for="post-url">{{ url('posts') }}/</label>
+                    <label for="post-url">{{ url('blog') }}/</label>
                     <input id="post-url" name="slug" value="{{ old('slug', $post->slug) }}">
                 </span>
 
@@ -40,9 +40,12 @@
                 <span class="tags-input" data-tags="{{ json_encode(old('tags', $post->tags->map->name)) }}" data-id="post-tags" data-name="tags">
                     <span contenteditable placeholder="Type a comma-separated list of tags..."></span>
                 </span>
+
+                <label for="published_at">Published At</label>
+                <input id="published_at" name="published_at" type="date" value="{{ Carbon\Carbon::parse(old('published_at', $post->published_at))->format('Y-m-d') }}">
             </section>
         </div>
-        <div class="fieldset">
+        <div class="fieldset" role="group">
             <div class="overview">
                 <h3>Content</h3>
                 <p>The content of your blog post.</p>

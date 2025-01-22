@@ -16,6 +16,7 @@ class UpdateBlogPost
             $post->slug = $request->slug;
             $post->content = $request->content ?? '';
             $post->excerpt = $request->excerpt;
+            $post->published_at = $request->published_at ?? null;
 
             if ($image = $request->file('image')) {
                 $post->image = $image->storePublicly('posts/'.$post->id, ['disk' => 'public']);

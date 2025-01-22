@@ -1,0 +1,12 @@
+label: franklinstrube.com
+server: franklinstrube.com
+remote_path: /var/www/com.franklinstrube.dev
+after: cd /var/www/com.franklinstrube.dev; composer dump-autoload
+method: rsync
+# rsync_path: sudo rsync
+
+production:
+    remote_path: /var/www/com.franklinstrube
+    after: cd /var/www/com.franklinstrube; composer dump-autoload
+
+# vim: syntax=yaml

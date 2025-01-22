@@ -1,0 +1,17 @@
+- .editorconfig
+- .env
+- .htmlhintrc
+- .phpunit.result.cache
+- .styleci.yml
+- database/database.sqlite
+- eslint.config.js
+- node_modules/
+- postcss.config.js
+- public/storage/
+- public/wp-content
+- storage/
+- tailwind.config.js
+- vendor/
+- vendor/
+- vite.config.js
+- wp-content.x/
