@@ -6,10 +6,10 @@
 
 @section('main')
     <form action="" method="POST">
-        {{ csrf_field() }}
+        @csrf
 
         <label>Email Address</label>
-        <input name="email" type="email" />
+        <input name="email" type="email" value="{{ old('email', '') }}" />
 
         <label>Password</label>
         <input name="password" type="password" />

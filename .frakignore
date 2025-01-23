@@ -3,11 +3,13 @@
 - .htmlhintrc
 - .phpunit.result.cache
 - .styleci.yml
+- bootstrap/cache
 - database/database.sqlite
 - eslint.config.js
 - node_modules/
 - postcss.config.js
-- public/storage/
+- public/hot
+- public/storage
 - public/wp-content
 - storage/
 - tailwind.config.js

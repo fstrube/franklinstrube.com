@@ -17,5 +17,5 @@ export default defineConfig({
             ],
         },
     },
-    publicDir: './public',
+    publicDir: process.env.NODE_ENV !== 'production' ? './public' : null,
 });
