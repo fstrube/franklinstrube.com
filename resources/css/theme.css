@@ -130,8 +130,8 @@ html, body { background: #F6F6F0; font-family: 'Open Sans', sans-serif; font-siz
 .main .load-more a:hover { background-color: rgba(0,0,0,0.05); text-decoration: underline; -webkit-transition: background-color 0.3s; }
 
 .single .main { margin: 0 auto; width: 960px; }
-.single .main h1 { line-height: 1.2; padding-bottom: 0.8rem; }
-.single .main h1.post-title { background-color: #E6B517; background-position: center center; background-repeat: no-repeat; background-size: cover; color: #fff; display: flex; flex-direction: column; justify-content: flex-end; margin: -20px calc(960px / 2 - 50vw) 20px; min-height: 65px; padding-bottom: 30px; text-align: center; text-shadow: 0 0 5px rgba(0, 0, 0, 0.75); }
+.single .main h1 { line-height: 1.5; padding-bottom: 0.8rem; }
+.single .main h1.post-title { background-color: #E6B517; background-position: center center; background-repeat: no-repeat; background-size: cover; color: #fff; display: flex; flex-direction: column; justify-content: flex-end; margin: -20px -40px 20px; min-height: 65px; padding-bottom: 30px; text-align: center; text-shadow: 0 0 5px rgba(0, 0, 0, 0.75); }
 .single .main h1.post-title.with-image { min-height: 250px; }
 .single .main .published-at { color: #999; display: block; float: right; }
 .single .main .content { clear: both; padding-top: 0.5rem; }
