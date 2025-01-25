@@ -94,5 +94,12 @@
         </div>
         -->
         <script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <script type="module">
+            import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+            mermaid.initialize({ startOnLoad: false });
+            mermaid.run({
+                querySelector: '.language-mermaid',
+            });
+        </script>
     </body>
 </html>
