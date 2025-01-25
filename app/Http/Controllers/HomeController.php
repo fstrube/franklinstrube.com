@@ -14,7 +14,11 @@ class HomeController extends Controller
     public function __invoke()
     {
         $context = [
-            'posts' => BlogPost::published()->orderBy('published_at', 'desc')->limit(10)->get(),
+            'posts' => BlogPost::published()
+                ->where('published_at', '<=', now())
+                ->orderBy('published_at', 'desc')
+                ->limit(10)
+                ->get(),
             'asides' => [],
         ];
 
