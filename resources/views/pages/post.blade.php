@@ -1,5 +1,7 @@
 @extends('layouts.default')
 
+@section('title', $post->title)
+
 @section('body.class', 'single')
 
 @section('content')
