@@ -6,7 +6,7 @@
 
 @section('content')
     <div role="main" class="main">
-        <x-article title="SVG - Civilization II">
+        <x-article title="SVG - Civilization II" markdown>
 <figure class="left">
 
 ![SVG - Civilization II Screenshot](/images/pages/civ_svg.jpg)

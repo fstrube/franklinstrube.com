@@ -140,7 +140,7 @@ html, body { background: #F6F6F0; font-family: 'Open Sans', sans-serif; font-siz
 .single .main .tags { float: left; font-weight: bold; margin-bottom: 8px; }
 .single .main .tags a, .single .main .tags span { color: #459; display: inline-block; font-weight: normal; line-height: 1; margin: auto 8px auto auto; padding: 0; text-decoration: none; -webkit-transition: background-color 0.2s; }
 .single .main .tags a:hover { background-color: #cdf; -webkit-transition: background-color 0.2s; }
-.single .main img { display: block; margin: 1rem auto; }
+.single .main img { display: block; margin: 1rem auto; max-width: 100%; }
 .single .main .left { float: left; margin-right: 1rem; }
 .single .main .right { float: right; margin-left: 1rem; }
 .single .main figure { font-size: 0.75rem; }

@@ -6,7 +6,7 @@
 
 @section('content')
     <div role="main" class="main">
-        <x-article title="Frak">
+        <x-article title="Frak" markdown>
 Frak is a deployment utility that I built long ago, when I was working primarily on Magento development. It is a wrapper around `rsync` with some extra enhancements, like the ability to view a diff between your local files and the server.
 
 I still use Frak for Mythos and Banjo deployments.

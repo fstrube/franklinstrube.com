@@ -1,6 +1,8 @@
 import './bootstrap';
 import hljs from 'highlight.js';
+import CopyButtonPlugin from 'highlightjs-copy';
 import 'highlight.js/styles/a11y-dark.css';
+import 'highlightjs-copy/styles/highlightjs-copy.css';
 
 $(function() {
     $("#header .toggle-navigation").click(function(el) {
@@ -19,5 +21,6 @@ $(function() {
         return false;
     });
 
+    hljs.addPlugin(new CopyButtonPlugin());
     hljs.highlightAll();
 });

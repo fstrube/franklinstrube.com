@@ -8,8 +8,13 @@ class PostsController extends Controller
 {
     public function show(BlogPost $post)
     {
-        $previous = BlogPost::where('published_at', '<', $post->published_at)->orderBy('published_at', 'desc')->first();
-        $next = BlogPost::where('published_at', '>', $post->published_at)->orderBy('published_at', 'asc')->first();
+        $previous = BlogPost::published($post->published_at)
+            ->orderBy('published_at', 'desc')
+            ->first();
+        $next = BlogPost::published(now())
+            ->where('published_at', '>', $post->published_at)
+            ->orderBy('published_at', 'asc')
+            ->first();
 
         return view('pages.post', [
             'post' => $post,

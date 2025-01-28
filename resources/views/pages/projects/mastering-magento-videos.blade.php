@@ -6,7 +6,7 @@
 
 @section('content')
     <div role="main" class="main">
-        <x-article title="Video Course: Mastering Magento">
+        <x-article title="Video Course: Mastering Magento" markdown>
 ## Magento Tutorial Videos for Developers
 
 Magento development can be hard to grasp. The learning curve is steep. Many features of Magento development are unclear. And code that you find online often isn’t explained. But don’t lose hope! I created the Mastering Magento video course to help you. These Mastering Magento tutorial videos are filled with detailed and in-depth walkthroughs. And when I say filled, I’m talking jam-packed with nearly four hours of video.

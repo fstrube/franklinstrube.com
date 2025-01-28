@@ -3,7 +3,7 @@
         <h1
             class="post-title {{ $image ?? null ? 'with-image' : '' }}"
             @if($image ?? null)
-            style="background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.75)), url({{ $image }})"
+            style="background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.75)), url({{  Storage::url($image) }})"
             @endif
         >{{ $title }}</h1>
         @if($published_at ?? null)
@@ -15,7 +15,7 @@
             @endforeach
         </div>
         <div class="content">
-            {{ new Illuminate\Support\HtmlString(app('markdown')->convert($slot)) }}
+            {{ ($markdown ?? false) ? new Illuminate\Support\HtmlString(app('markdown')->convert($slot)) : $slot }}
         </div>
     </article>
 </div>

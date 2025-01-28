@@ -96,9 +96,13 @@ class BlogPost extends Model
      *
      * @param  mixed|\Illuminate\Contracts\Database\Query\Builder  $query
      */
-    public function scopePublished($query): void
+    public function scopePublished($query, $before = null): void
     {
         $query->whereNotNull('published_at');
+
+        if ($before) {
+            $query->where('published_at', '<', $before);
+        }
     }
 
     /**

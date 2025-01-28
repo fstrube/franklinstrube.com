@@ -6,7 +6,7 @@
 
 @section('content')
     <div role="main" class="main">
-        <x-article image="/images/pages/scorecard.png" title="Scorecard">
+        <x-article image="/images/pages/scorecard.png" title="Scorecard" markdown>
 The Scorecard is a rubric for estimating the quality of a web project. The checklist calculates a score for your project, which helps to determine identify areas that need more attention.
 
 The intended use of this list is to provide a quick way to assess the quality of a web project (without having to dive into code).

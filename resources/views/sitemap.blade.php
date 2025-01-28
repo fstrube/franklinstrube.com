@@ -13,7 +13,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>{{ route('blog.home') }}</loc>
-        <lastmod>{{ App\Models\BlogPost::published()->where('published_at', '<=', now())->
+        <lastmod>{{ App\Models\BlogPost::published(now())->
             orderBy('published_at', 'desc')->first()->published_at->format('Y-m-d') }}</lastmod>
         <changefreq>monthly</changefreq>
     </url>
@@ -26,7 +26,7 @@
     </url>
     @endforeach
     {{-- Blog posts--}}
-    @foreach(App\Models\BlogPost::published()->where('published_at', '<=', now())->orderBy('published_at', 'desc')->get() as $post)
+    @foreach(App\Models\BlogPost::published(now())->orderBy('published_at', 'desc')->get() as $post)
     <url>
         <loc>{{ $post->url }}</loc>
         <lastmod>{{ $post->published_at->format('Y-m-d') }}</lastmod>

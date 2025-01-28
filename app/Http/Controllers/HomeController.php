@@ -17,7 +17,6 @@ class HomeController extends Controller
             'posts' => BlogPost::published()
                 ->where('published_at', '<=', now())
                 ->orderBy('published_at', 'desc')
-                ->limit(10)
                 ->get(),
             'asides' => [],
         ];
