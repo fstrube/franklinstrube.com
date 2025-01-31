@@ -111,7 +111,7 @@ html, body { background: #F6F6F0; font-family: 'Open Sans', sans-serif; font-siz
 .main .excerpt:last-child { border-bottom: none; }
 .main .excerpt .post-title { margin-bottom: 1rem; }
 .main .excerpt .post-title.with-image { background-color: #E6B517; background-position: center center; background-size: cover; color: #fff; display: flex; flex-direction: column; justify-content: flex-end; min-height:150px; padding: 1rem; text-align: center; text-shadow: 0 0 5px rgba(0, 0, 0, 0.75); }
-.main .excerpt .post-title h2 { font-size: 1.8em; line-height: 1; margin-bottom: 1rem; }
+.main .excerpt .post-title h2 { font-size: 1.8em; line-height: 1.3; margin-bottom: 1rem; }
 .main .excerpt .post-title.with-image h2 { margin-bottom: 0; }
 .main .excerpt .post-title a { color: inherit; display: block; height: 100%; text-decoration: none; -webkit-transition: color 0.1s; }
 .main .excerpt .post-title a:hover { color: #E6B517; }
@@ -130,7 +130,7 @@ html, body { background: #F6F6F0; font-family: 'Open Sans', sans-serif; font-siz
 .main .load-more a:hover { background-color: rgba(0,0,0,0.05); text-decoration: underline; -webkit-transition: background-color 0.3s; }
 
 .single .main { margin: 0 auto; width: 960px; }
-.single .main h1 { line-height: 1.5; padding-bottom: 0.8rem; }
+.single .main h1 { line-height: 1.5; padding: 0.8rem; }
 .single .main h1.post-title { background-color: #E6B517; background-position: center center; background-repeat: no-repeat; background-size: cover; color: #fff; display: flex; flex-direction: column; justify-content: flex-end; margin: -20px -40px 20px; min-height: 65px; padding-bottom: 30px; text-align: center; text-shadow: 0 0 5px rgba(0, 0, 0, 0.75); }
 .single .main h1.post-title.with-image { min-height: 250px; }
 .single .main .published-at { color: #999; display: block; float: right; }
@@ -140,11 +140,12 @@ html, body { background: #F6F6F0; font-family: 'Open Sans', sans-serif; font-siz
 .single .main .tags { float: left; font-weight: bold; margin-bottom: 8px; }
 .single .main .tags a, .single .main .tags span { color: #459; display: inline-block; font-weight: normal; line-height: 1; margin: auto 8px auto auto; padding: 0; text-decoration: none; -webkit-transition: background-color 0.2s; }
 .single .main .tags a:hover { background-color: #cdf; -webkit-transition: background-color 0.2s; }
-.single .main img { display: block; margin: 1rem auto; max-width: 100%; }
+.single .main img, .single .main svg { display: block; margin: 1rem auto; max-width: 100%; }
 .single .main .left { float: left; margin-right: 1rem; }
 .single .main .right { float: right; margin-left: 1rem; }
 .single .main figure { font-size: 0.75rem; }
 .single .main pre { clear: both; }
+.single .main pre code { display: block; overflow: auto; width: 100%; }
 .single .main .nav-single { border-top: solid 1px #c6c6c0; margin: 50px 0; }
 .single .main .nav-single:before { background: #f6f6f0; color: #c6c6c0; content: '#'; clear: left; display: block; font-size: 20px; line-height: 1; margin: -10px auto 20px; text-align: center; width: 30px; }
 .single .main .nav-single .nav-previous { float: left; }
