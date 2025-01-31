@@ -4,6 +4,15 @@
     Home
 @endsection
 
+@section('head')
+    <meta name="description" content="This is where I write about my technical endeavors. PHP, Laravel, Linux, SQL, JavaScript, and more.">
+    <meta name="og:title" content="Home &laquo; #!/bin/strube">
+    <meta name="og:type" content="website">
+    <meta name="og:url" content="{{ route('blog.home') }}">
+    <meta property="og:site_name" content="#!/bin/strube" />
+    <link rel="canonical" href="{{ route('blog.home') }}">
+@endsection
+
 @section('content')
     <div role="main" class="main">
         @foreach($posts as $post)

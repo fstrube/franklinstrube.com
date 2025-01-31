@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" prefix="og: https://ogp.me/ns#">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>
-            @yield('title') &laquo; #!/bin/strube
+            @yield('title') &laquo; #!/bin/strube &laquo; Web development blog
         </title>
 
         <link rel="icon" href="/favicon.ico">
@@ -15,6 +15,8 @@
 
         <!-- Styles / Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+        @yield('head')
     </head>
     <body class="@yield('body.class')">
         <div id="header">
