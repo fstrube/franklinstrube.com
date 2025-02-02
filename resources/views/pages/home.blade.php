@@ -9,7 +9,7 @@
     <meta name="og:title" content="Home &laquo; #!/bin/strube">
     <meta name="og:type" content="website">
     <meta name="og:url" content="{{ route('blog.home') }}">
-    <meta property="og:site_name" content="#!/bin/strube" />
+    <meta name="og:site_name" content="#!/bin/strube" />
     <link rel="canonical" href="{{ route('blog.home') }}">
 @endsection
 

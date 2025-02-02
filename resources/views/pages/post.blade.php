@@ -3,15 +3,9 @@
 @section('title', $post->title)
 
 @section('head')
+    <x-open-graph :post="$post" />
     <meta name="description" content="{{ data_get($post, 'seo.description') ?? $post->excerpt }}">
-    <meta name="og:title" content="{{ $post->title }} &laquo; #!/bin/strube">
-    @if($post->image)
-    <meta property="og:image" content="{{ url(Storage::url($post->image)) }}">
-    @endif
-    <meta name="og:type" content="article">
-    <meta property="og:site_name" content="#!/bin/strube" />
-    <meta name="og:url" content="{{ route('blog.posts.show', $post) }}">
-    <link rel="canonical" href="{{ route('blog.posts.show', $post) }}">
+    <link rel="canonical" href="{{ route('blog.posts.show', $post->slug) }}">
 @endsection
 
 @section('body.class', 'single')
