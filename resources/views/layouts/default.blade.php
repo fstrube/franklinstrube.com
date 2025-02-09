@@ -37,7 +37,6 @@
             <main>
                 @yield('content')
             </main>
-            <div class="push"></div>
         </div>
         <div id="footer" class="hcard">
             <footer>

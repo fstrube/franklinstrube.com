@@ -54,7 +54,7 @@ textarea { resize: vertical; }
     * { margin: 0; }
     html, body { height: 100%; }
     .wrapper { min-height: 100%; height: auto !important; height: 100%; margin: 0; }
-    #footer, .push { clear: both; height: 300px; padding: 20px; /* .push must be the same height as .footer */ }
+    #footer, .push { clear: both; min-height: 300px; padding: 20px; /* .push must be the same height as .footer */ }
 }
 
 /* ==========================================================================
@@ -167,10 +167,10 @@ html, body { background: #F6F6F0; font-family: 'Open Sans', sans-serif; font-siz
 footer { background: #2F4167; border-top: solid 1px #051E52; color: #658BDC; height: 300px; margin:30px 0 0; }
 footer * { color: #658BDC; }
 */
-#footer { background: #D6D6D0; border: solid 1px #ccc; font-size: 0.8em; height: 300px; margin: -340px 0 0; padding: 20px; position: relative; }
+#footer { background: #D6D6D0; border: solid 1px #ccc; font-size: 0.8em; min-height: 300px; margin: 0; padding: 20px; position: relative; }
 #footer * { color: #666; text-shadow: 1px 1px -1px #F6F6F0; }
 
-#footer .about { border-left: solid 1px #ccc; float: right; height: 320px; margin: -20px 0; padding: 0 0 20px 2%; width: 40%; -webkit-transition: width 0.5s; }
+#footer .about { border-left: solid 1px #ccc; float: right; min-height: 320px; margin: -20px 0; padding: 0 0 20px 2%; width: 40%; -webkit-transition: width 0.5s; }
 #footer .about h4 { font-size: 1.2em; margin: 10px 0; }
 #footer .about * { color: #666; }
 #footer .about dl { margin: 0; }
