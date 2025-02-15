@@ -8,9 +8,16 @@ use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 Route::get('/', Controllers\HomeController::class)->name('blog.home');
 Route::get('/robots.txt', Controllers\RobotsController::class)->name('robots.txt');
 Route::get('/sitemap.xml', Controllers\SitemapController::class)->name('sitemap.xml');
-Route::get('/blog/{slug}', [Controllers\PostsController::class, 'show'])->name('blog.posts.show');
-Route::get('/projects', [Controllers\ProjectsController::class, 'index'])->name('projects');
-Route::get('/projects/{project}', [Controllers\ProjectsController::class, 'show'])->name('projects.show');
+Route::get('/blog/{slug}', [Controllers\PostsController::class, 'show'])
+    ->name('blog.posts.show');
+Route::get('/projects', [Controllers\ProjectsController::class, 'index'])
+    ->name('projects');
+Route::get('/projects/{project}', [Controllers\ProjectsController::class, 'show'])
+    ->name('projects.show');
+
+// Project: Markdown to PDF Converter
+Route::get('/markdown-to-pdf', [Controllers\MarkdownToPdfController::class, 'show'])
+    ->name('markdown-to-pdf');
 
 // Admin routes
 Route::group(
