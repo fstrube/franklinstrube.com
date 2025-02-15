@@ -248,10 +248,12 @@
         }
 
         .editor {
+            height: 50vh;
             width: 100vw;
         }
 
         .preview {
+            height: 50vh;
             width: 100vw;
         }
 
