@@ -8,20 +8,44 @@
             <div v-if="html" class="preview">
                 <iframe v-if="html" ref="preview" :src="`data:text/html;charset=utf8;base64,${btoa(`<!DOCTYPE html><html>${head}<body ${printing ? 'onload=&quot;window.print()&quot;' : ''}>${html}${scripts}</body></html>`)}`" />
             </div>
-            <div v-else class="preview-empty">
-                <p>👈 Use the area on the left to craft your Markdown document.</p>
-                <p>A preview will be rendered here.</p>
-                <p>When you're done, click File › Print and save your document as a PDF.</p>
-            </div>
+            <template v-else>
+                <div class="preview-empty--desktop">
+                    <p>👈 Use the area on the left to craft your Markdown document.</p>
+                    <p>A preview will be rendered here.</p>
+                    <p>When you're done, click File › Print and save your document as a PDF.</p>
+                </div>
+                <div class="preview-empty--mobile">
+                    <p>☝️ Use the area above to craft your Markdown document.</p>
+                    <p>A preview will be rendered here.</p>
+                    <p>When you're done, click File › Print and save your document as a PDF.</p>
+                </div>
+            </template>
         </div>
         <input v-show="false" accept=".md,.txt,text/plain,text/markdown" ref="file" type="file" @input="open()">
     </AppLayout>
+    <Dialog v-model:visible="viewingAboutDialog" class="about-dialog" modal>
+        <p>
+            Markdown-to-PDF is a tool for converting easily-readable Markdown to beautiful PDFs. The tool runs entirely in the browser and doesn't send any of your text across the wire.
+        </p>
+        <p>
+            <a href="https://marked.js.org/" target="_blank">Marked.js</a> - Markdown converter<br>
+            <a href="https://ace.c9.io/" target="_blank">Ace</a> - Code editor<br>
+            <a href="https://primevue.org/" target="_blank">PrimeVue</a> - UI kit<br>
+            <a href="https://vuejs.org/" target="_blank">Vue.js</a> - Frontend framework<br>
+            <a href="https://inertiajs.com/" target="_blank">Inertia</a> - Frontend routing<br>
+            <a href="https://laravel.com/" target="_blank">Laravel</a> - Backend framework<br>
+            <a href="https://vite.dev/" target="_blank">Vite</a> - Build tool
+        </p>
+        <p class="made-with-love">Made with ❤️ in Washington, D.C.</p>
+        <p class="copyright">&copy; {{ (new Date()).getYear() + 1900 }} <a href="https://franklinstrube.com">franklinstrube.com</a></p>
+    </Dialog>
 </template>
 
 <script setup>
     import AppLayout from '@/inertia/layouts/AppLayout.vue'
     import AceEditor from '@/components/AceEditor.vue'
-    import showdown from 'showdown'
+    import Dialog from 'primevue/dialog';
+    import { marked } from 'marked'
     import { onMounted, ref, useTemplateRef } from 'vue'
     import Menubar from 'primevue/menubar'
 
@@ -32,6 +56,7 @@
         margin: '0.5in',
     })
     const printing = ref(false)
+    const viewingAboutDialog = ref(false)
     const markdown = ref(props.markdown)
     const html = ref('')
     const menuItems = [
@@ -77,9 +102,15 @@
             items: [
                 {
                     label: 'Markdown Reference',
+                    command() {
+                        window.open('https://commonmark.org/help/')
+                    }
                 },
                 {
                     label: 'About',
+                    command() {
+                        viewingAboutDialog.value = true
+                    }
                 },
             ],
         },
@@ -144,12 +175,8 @@
     }
 
     function convert() {
-        const converter = new showdown.Converter({
-            emoji: true,
-            tables: true,
-        })
+        const converted = marked.parse(markdown.value)
 
-        const converted = converter.makeHtml(markdown.value)
         html.value = converted
     }
 
@@ -198,9 +225,62 @@
         width: 100%;
     }
 
-    .preview-empty {
+    .preview-empty--desktop {
         padding: 30vh 1rem 1rem 1rem;
         text-align: center;
         width: 50vw;
+    }
+    .preview-empty--mobile {
+        padding: 10vh 1rem 1rem 1rem;
+        text-align: center;
+        width: 100vw;
+    }
+
+    @media screen and (width >= 600px) {
+        .preview-empty--mobile {
+            display: none;
+        }
+    }
+
+    @media screen and (width < 600px) {
+        .container {
+            flex-direction: column;
+        }
+
+        .editor {
+            width: 100vw;
+        }
+
+        .preview {
+            width: 100vw;
+        }
+
+        .preview-empty--desktop {
+            display: none;
+        }
+    }
+</style>
+
+<style>
+    .about-dialog {
+        margin: 1rem;
+        max-width: 500px;
+    }
+
+    .about-dialog p {
+        margin-bottom: 1rem;
+    }
+
+    .about-dialog a {
+        color: #3333c9;
+    }
+
+    .made-with-love {
+        margin-top: 2rem;
+        text-align: center;
+    }
+
+    .copyright {
+        text-align: center;
     }
 </style>
