@@ -2,7 +2,6 @@
     <iframe
         ref="iframe"
         :src="src"
-        :style="{ zoom: zoom }"
     />
 </template>
 
@@ -68,7 +67,7 @@
                     fallback(props.preferences.margin?.right, 1) + `in ` +
                     fallback(props.preferences.margin?.bottom, 1) + `in ` +
                     fallback(props.preferences.margin?.left, 1) + `in;
-                /* zoom: ` + props.zoom + `; */
+                zoom: ` + props.zoom + `;
             }
         }
     </style>
@@ -105,10 +104,10 @@
 
 <style scoped>
     iframe {
+        aspect-ratio: 8.5 / 11;
         background: #ffffff;
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-        min-height: 11in;
-        width: 8.5in;
+        width: 100%;
     }
 </style>
 
