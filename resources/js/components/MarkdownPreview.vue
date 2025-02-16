@@ -18,27 +18,6 @@
 <html>
 <head>
     <title>document.pdf</title>
-    <style>
-        @page {
-            margin: ` +
-                fallback(props.preferences.margin?.top, 0.5) + `in ` +
-                fallback(props.preferences.margin?.right, 0.5) + `in ` +
-                fallback(props.preferences.margin?.bottom, 0.5) + `in ` +
-                fallback(props.preferences.margin?.left, 0.5) + `in ;
-        }
-
-        @media screen {
-            body {
-                background: white;
-                margin: ` +
-                    fallback(props.preferences.margin?.top, 1) + `in ` +
-                    fallback(props.preferences.margin?.right, 1) + `in ` +
-                    fallback(props.preferences.margin?.bottom, 1) + `in ` +
-                    fallback(props.preferences.margin?.left, 1) + `in ;
-                zoom: ` + props.zoom + `;
-            }
-        }
-    </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"><\/script>
     <style>
@@ -63,6 +42,27 @@
                 left: 100px;
                 right: 0;
                 top: 0.75rem;
+            }
+        }
+    </style>
+    <style>
+        @page {
+            margin: ` +
+                fallback(props.preferences.margin?.top, 0.5) + `in ` +
+                fallback(props.preferences.margin?.right, 0.5) + `in ` +
+                fallback(props.preferences.margin?.bottom, 0.5) + `in ` +
+                fallback(props.preferences.margin?.left, 0.5) + `in ;
+        }
+
+        @media screen {
+            body {
+                background: white;
+                margin: ` +
+                    fallback(props.preferences.margin?.top, 1) + `in ` +
+                    fallback(props.preferences.margin?.right, 1) + `in ` +
+                    fallback(props.preferences.margin?.bottom, 1) + `in ` +
+                    fallback(props.preferences.margin?.left, 1) + `in ;
+                zoom: ` + props.zoom + `;
             }
         }
     </style>

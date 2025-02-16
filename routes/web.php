@@ -16,8 +16,8 @@ Route::get('/projects/{project}', [Controllers\ProjectsController::class, 'show'
     ->name('projects.show');
 
 // Project: Markdown to PDF Converter
-Route::get('/markdown-to-pdf', [Controllers\MarkdownToPdfController::class, 'show'])
-    ->name('markdown-to-pdf');
+Route::get('/tools/markdown-to-pdf', [Controllers\Tools\MarkdownToPdfController::class, 'show'])
+    ->name('tools.markdown-to-pdf');
 
 // Admin routes
 Route::group(

@@ -26,6 +26,8 @@
 
         aceEditor.setValue(model.value || '')
 
+        aceEditor.session.setUseWrapMode(true);
+
         aceEditor.session.on('change', function(delta) {
             model.value = aceEditor.getValue()
         })
