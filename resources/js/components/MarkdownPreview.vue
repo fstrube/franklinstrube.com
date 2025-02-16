@@ -1,5 +1,9 @@
 <template>
-    <iframe ref="iframe" :src="src" :style="{ zoom: zoom }" />
+    <iframe
+        ref="iframe"
+        :src="src"
+        :style="{ zoom: zoom }"
+    />
 </template>
 
 <script setup>
@@ -18,6 +22,8 @@
 <html>
 <head>
     <title>document.pdf</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"><\/script>
     <style>
@@ -48,10 +54,10 @@
     <style>
         @page {
             margin: ` +
-                fallback(props.preferences.margin?.top, 0.5) + `in ` +
-                fallback(props.preferences.margin?.right, 0.5) + `in ` +
-                fallback(props.preferences.margin?.bottom, 0.5) + `in ` +
-                fallback(props.preferences.margin?.left, 0.5) + `in ;
+                fallback(props.preferences.margin?.top, 1) + `in ` +
+                fallback(props.preferences.margin?.right, 1) + `in ` +
+                fallback(props.preferences.margin?.bottom, 1) + `in ` +
+                fallback(props.preferences.margin?.left, 1) + `in;
         }
 
         @media screen {
@@ -61,8 +67,8 @@
                     fallback(props.preferences.margin?.top, 1) + `in ` +
                     fallback(props.preferences.margin?.right, 1) + `in ` +
                     fallback(props.preferences.margin?.bottom, 1) + `in ` +
-                    fallback(props.preferences.margin?.left, 1) + `in ;
-                zoom: ` + props.zoom + `;
+                    fallback(props.preferences.margin?.left, 1) + `in;
+                /* zoom: ` + props.zoom + `; */
             }
         }
     </style>
