@@ -5,8 +5,8 @@
                 <Menubar class="editor-toolbar" :model="menuItems" />
                 <AceEditor class="editor-view" ref="editor" v-model="markdown" @update:modelValue="debounce(() => convert(), 1000)()"/>
             </div>
-            <div v-if="html" class="preview">
-                <iframe v-if="html" ref="preview" :src="`data:text/html;charset=utf8;base64,${btoa(`<!DOCTYPE html><html>${head}<body ${printing ? 'onload=&quot;window.print()&quot;' : ''}>${html}${scripts}</body></html>`)}`" />
+            <div v-if="html" class="preview" ref="preview">
+                <MarkdownPreview :html="html" :preferences="preferences" :printing="printing" :zoom="zoom" />
             </div>
             <template v-else>
                 <div class="preview-empty--desktop">
@@ -23,9 +23,9 @@
         </div>
         <input v-show="false" accept=".md,.txt,text/plain,text/markdown" ref="file" type="file" @input="open()">
     </AppLayout>
-    <Dialog v-model:visible="viewingAboutDialog" class="about-dialog" modal>
+    <Dialog v-model:visible="showingAboutDialog" class="about-dialog" modal>
         <p>
-            Markdown-to-PDF is a tool for converting easily-readable Markdown to beautiful PDFs. The tool runs entirely in the browser and doesn't send any of your text across the wire.
+            Markdown-to-PDF is a tool for converting easily-readable Markdown to beautiful PDFs. The tool runs entirely in the browser and doesn't send any of your content across the wire.
         </p>
         <p>
             <a href="https://marked.js.org/" target="_blank">Marked.js</a> - Markdown converter<br>
@@ -39,24 +39,63 @@
         <p class="made-with-love">Made with ❤️ in Washington, D.C.</p>
         <p class="copyright">&copy; {{ (new Date()).getYear() + 1900 }} <a href="https://franklinstrube.com">franklinstrube.com</a></p>
     </Dialog>
+    <Dialog v-model:visible="showingPreferencesDialog" class="preferences-dialog" modal>
+        <label>Page Margins</label>
+        <div class="margin">
+            <InputGroup class="margin-top">
+                <InputText v-model="preferences.margin.top" type="text" placeholder="1" />
+                <InputGroupAddOn>
+                    in.
+                </InputGroupAddOn>
+            </InputGroup>
+            <InputGroup class="margin-right">
+                <InputText v-model="preferences.margin.right" type="text" placeholder="1" />
+                <InputGroupAddOn>
+                    in.
+                </InputGroupAddOn>
+            </InputGroup>
+            <InputGroup class="margin-bottom">
+                <InputText v-model="preferences.margin.bottom" type="text" placeholder="1" />
+                <InputGroupAddOn>
+                    in.
+                </InputGroupAddOn>
+            </InputGroup>
+            <InputGroup class="margin-left">
+                <InputText v-model="preferences.margin.left" type="text" placeholder="1" />
+                <InputGroupAddOn>
+                    in.
+                </InputGroupAddOn>
+            </InputGroup>
+        </div>
+    </Dialog>
 </template>
 
 <script setup>
     import AppLayout from '@/inertia/layouts/AppLayout.vue'
     import AceEditor from '@/components/AceEditor.vue'
+    import MarkdownPreview from '@/components/MarkdownPreview.vue'
     import Dialog from 'primevue/dialog';
+    import InputGroup from 'primevue/inputgroup';
+    import InputGroupAddOn from 'primevue/inputgroupaddon';
+    import InputText from 'primevue/inputtext';
     import { marked } from 'marked'
-    import { onMounted, ref, useTemplateRef } from 'vue'
+    import { onMounted, ref, useTemplateRef, watch } from 'vue'
     import Menubar from 'primevue/menubar'
 
     const props = defineProps({
         markdown: String,
     })
-    const settings = ref({
-        margin: '0.5in',
+    const preferences = ref({
+        margin: {
+            top: '',
+            right: '',
+            bottom: '',
+            left: '',
+        }
     })
     const printing = ref(false)
-    const viewingAboutDialog = ref(false)
+    const showingAboutDialog = ref(false)
+    const showingPreferencesDialog = ref(false)
     const markdown = ref(props.markdown)
     const html = ref('')
     const menuItems = [
@@ -73,7 +112,8 @@
                     label: 'Open repository ...',
                     command() {
 
-                    }
+                    },
+                    disabled: true,
                 },
                 {
                     label: 'Print',
@@ -90,9 +130,9 @@
             label: 'Edit',
             items: [
                 {
-                    label: 'Settings',
+                    label: 'Preferences',
                     command() {
-
+                        showingPreferencesDialog.value = true
                     },
                 }
             ],
@@ -109,7 +149,7 @@
                 {
                     label: 'About',
                     command() {
-                        viewingAboutDialog.value = true
+                        showingAboutDialog.value = true
                     }
                 },
             ],
@@ -118,53 +158,7 @@
     const preview = useTemplateRef('preview')
     const file = useTemplateRef('file')
     const editor = useTemplateRef('editor')
-    const head = `
-<head>
-    <title>document.pdf</title>
-    <style>
-        @page {
-            margin: ${settings.value.margin};
-        }
-
-        @media screen {
-            body {
-                background: white;
-                margin: ${settings.value.margin};
-            }
-        }
-    </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></${'script'}>
-    <style>
-        .hljs {
-            border-radius: 8px;
-            border: solid 1px #cccccc;
-            position: relative;
-
-            &::before {
-                background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1NCIgaGVpZ2h0PSIxNCIgdmlld0JveD0iMCAwIDU0IDE0Ij48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDEgMSkiPjxjaXJjbGUgY3g9IjYiIGN5PSI2IiByPSI2IiBmaWxsPSIjRkY1RjU2IiBzdHJva2U9IiNFMDQ0M0UiIHN0cm9rZS13aWR0aD0iLjUiPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjI2IiBjeT0iNiIgcj0iNiIgZmlsbD0iI0ZGQkQyRSIgc3Ryb2tlPSIjREVBMTIzIiBzdHJva2Utd2lkdGg9Ii41Ij48L2NpcmNsZT48Y2lyY2xlIGN4PSI0NiIgY3k9IjYiIHI9IjYiIGZpbGw9IiMyN0M5M0YiIHN0cm9rZT0iIzFBQUIyOSIgc3Ryb2tlLXdpZHRoPSIuNSI+PC9jaXJjbGU+PC9nPjwvc3ZnPg==');
-                background-repeat: no-repeat;
-                content: '';
-                display: block;
-                height: 2em;
-            }
-
-            &::after {
-                content: attr(data-name);
-                display: inline-block;
-                font-size: 0.8em;
-                position: absolute;
-                left: 100px;
-                right: 0;
-                top: 0.75rem;
-            }
-        }
-    </style>
-</head>
-`
-    const scripts = `
-<script>hljs.highlightAll();</${'script'}>
-`
+    const zoom = ref(1)
 
     async function open() {
         const value = await file.value.files.item(0)?.text() || ''
@@ -180,7 +174,30 @@
         html.value = converted
     }
 
-    onMounted(() => convert())
+    function calculateZoom() {
+        const ruler = document.createElement('div')
+
+        ruler.style.width = '8.5in'
+        ruler.style.position = 'absolute'
+        ruler.style.left = '-9999px'
+        document.body.appendChild(ruler)
+
+        const { width: pageWidthInPixels } = ruler.getBoundingClientRect()
+        const { paddingLeft, paddingRight } = window.getComputedStyle(preview.value)
+        const width = preview.value.getBoundingClientRect().width - (parseFloat(paddingLeft) || 0) - (parseFloat(paddingRight) || 0)
+
+        ruler.remove()
+
+        zoom.value = width / pageWidthInPixels
+    }
+
+    watch(html, (value) => setTimeout(() => value.length && calculateZoom(), 0))
+
+    onMounted(() => {
+        convert()
+
+        window.addEventListener('resize', () => calculateZoom())
+    })
 </script>
 
 <style scoped>
@@ -214,15 +231,10 @@
         background: #e0e0e0;
         border: none;
         height: 100vh;
+        overflow-x: hidden;
+        overflow-y: auto;
         padding: 1rem;
         width: 50vw;
-    }
-
-    .preview iframe {
-        background: #ffffff;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-        height: 100%;
-        width: 100%;
     }
 
     .preview-empty--desktop {
@@ -234,6 +246,52 @@
         padding: 10vh 1rem 1rem 1rem;
         text-align: center;
         width: 100vw;
+    }
+
+    .preferences-dialog .margin {
+        border: solid 1px #cccccc;
+        height: calc(1.5 * 110px);
+        margin: 1rem auto 2rem;
+        position: relative;
+        width: calc(1.5 * 85px);
+    }
+
+    .preferences-dialog .margin .margin-top,
+    .preferences-dialog .margin .margin-right,
+    .preferences-dialog .margin .margin-bottom,
+    .preferences-dialog .margin .margin-left {
+        --p-inputgroup-addon-padding: 0.125rem;
+        --p-inputtext-padding-x: 0.375rem;
+        --p-inputtext-padding-y: 0.125rem;
+        --width: 6rem;
+        background-color: #ffffff;
+        padding: 0.375rem;
+        position: absolute;
+        width: var(--width);
+    }
+
+    .preferences-dialog .margin .margin-top {
+        top: -1.25rem;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .preferences-dialog .margin .margin-right {
+        right: calc(-1 * var(--width) / 2);
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .preferences-dialog .margin .margin-bottom {
+        bottom: -1.25rem;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .preferences-dialog .margin .margin-left {
+        left: calc(-1 * var(--width) / 2);
+        top: 50%;
+        transform: translateY(-50%);
     }
 
     @media screen and (width >= 600px) {
@@ -248,6 +306,8 @@
         }
 
         .editor {
+            border-bottom: solid 1px #cccccc;
+            border-right: none;
             height: 50vh;
             width: 100vw;
         }
@@ -264,9 +324,11 @@
 </style>
 
 <style>
+    .preferences-dialog,
     .about-dialog {
         margin: 1rem;
         max-width: 500px;
+        min-width: 300px;
     }
 
     .about-dialog p {
