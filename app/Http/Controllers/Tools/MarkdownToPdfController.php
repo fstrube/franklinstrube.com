@@ -16,7 +16,7 @@ MD;
      */
     public function show()
     {
-        Inertia::setRootView('layouts.inertia');
+        Inertia::setRootView('tools.markdown-to-pdf');
 
         return inertia('MarkdownToPdf', [
             'markdown' => $request->markdown ?? static::DEFAULT_MARKDOWN,

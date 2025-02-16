@@ -154,6 +154,12 @@
                 },
             ],
         },
+        {
+            label: 'Buy Me a Coffee ☕',
+            command() {
+                window.open('https://buymeacoffee.com/strube')
+            },
+        },
     ]
     const preview = useTemplateRef('preview')
     const file = useTemplateRef('file')

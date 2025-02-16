@@ -32,5 +32,11 @@
         <lastmod>{{ $post->published_at->format('Y-m-d') }}</lastmod>
         <changefreq>monthly</changefreq>
     </url>
-   @endforeach
+    @endforeach
+    {{-- Tools --}}
+    <url>
+        <loc>{{ route('tools.markdown-to-pdf') }}</loc>
+        <lastmod>{{ now()->format('Y-m-d') }}</lastmod>
+        <changefreq>daily</changefreq>
+    </url>
 </urlset>
