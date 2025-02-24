@@ -37,6 +37,13 @@
             'excerpt' => 'A checklist creator that calculates a score based on what you check in the form.'
         ],
         [
+            'title' => 'SlickPDF',
+            // 'image' => '/images/pages/scorecard.png',
+            'url' => 'https://slickpdf.com',
+            'external' => true,
+            'excerpt' => 'A Markdown-to-PDF converter.',
+        ],
+        [
             'title' => 'SVG - Civilization II',
             'url' => route('projects.show', 'civ'),
             'excerpt' => 'Recreate the Civilization II map in SVG.'
