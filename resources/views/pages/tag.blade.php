@@ -6,6 +6,10 @@
 
 @section('content')
     <div role="main" class="main">
+        <div class="excerpt">
+            <h2>All posts tagged with "{{ $tag->name }}":</h2>
+        </div>
+
         @foreach($tag->posts as $post)
         <div class="excerpt">
             <article>

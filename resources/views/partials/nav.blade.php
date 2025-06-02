@@ -1,5 +1,5 @@
 <ul class="navigation">
-    <li class="menu-item {{ request()->routeIs('home') || request()->routeIs('blog.*') ? 'current-menu-item' : '' }}">
+    <li class="menu-item {{ request()->routeIs('home') || request()->routeIs('blog.*') || request()->routeIs('tags.*') ? 'current-menu-item' : '' }}">
         <a href="/">Blog</a>
     </li>
     <li class="menu-item {{ request()->routeIs('projects') ? 'current-menu-item' : '' }}">

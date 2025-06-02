@@ -16,6 +16,9 @@ Route::get('/projects/{project}', [Controllers\ProjectsController::class, 'show'
     ->name('projects.show');
 Route::get('/tags/{tag}', [Controllers\TagsController::class, 'show'])
     ->name('tags.show');
+Route::get('/tag/{tag}', function(App\Models\Tag $tag) {
+    return redirect()->route('tags.show', $tag);
+});
 
 // Project: Markdown to PDF Converter
 Route::get('/tools/markdown-to-pdf', [Controllers\Tools\MarkdownToPdfController::class, 'show'])
