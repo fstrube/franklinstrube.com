@@ -18,7 +18,10 @@ class Tag extends Model
      */
     public function posts()
     {
-        return $this->morphedByMany(Post::class, 'taggable');
+        return $this
+            ->morphedByMany(BlogPost::class, 'taggable', 'taggables_tags')
+            ->published()
+            ->orderBy('published_at', 'desc');
     }
 
     /**

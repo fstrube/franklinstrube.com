@@ -11,7 +11,7 @@
         @endif
         <div class="tags">
             @foreach($tags ?? [] as $tag)
-            <span class="tag">#{{ $tag->name }}</span>
+            <a class="tag" href="{{ route('tags.show', $tag) }}">#{{ $tag->name }}</a>
             @endforeach
         </div>
         <div class="content">

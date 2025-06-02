@@ -33,6 +33,14 @@
         <changefreq>monthly</changefreq>
     </url>
     @endforeach
+    {{-- Tags --}}
+    @foreach(App\Models\Tag::query()->orderBy('name')->get() as $tag)
+    <url>
+        <loc>{{ route('tags.show', $tag) }}</loc>
+        <lastmod>{{ now()->format('Y-m-d') }}</lastmod>
+        <changefreq>daily</changefreq>
+    </url>
+    @endforeach
     {{-- Tools --}}
     <url>
         <loc>{{ route('tools.markdown-to-pdf') }}</loc>

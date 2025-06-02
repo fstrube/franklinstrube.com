@@ -14,6 +14,8 @@ Route::get('/projects', [Controllers\ProjectsController::class, 'index'])
     ->name('projects');
 Route::get('/projects/{project}', [Controllers\ProjectsController::class, 'show'])
     ->name('projects.show');
+Route::get('/tags/{tag}', [Controllers\TagsController::class, 'show'])
+    ->name('tags.show');
 
 // Project: Markdown to PDF Converter
 Route::get('/tools/markdown-to-pdf', [Controllers\Tools\MarkdownToPdfController::class, 'show'])
