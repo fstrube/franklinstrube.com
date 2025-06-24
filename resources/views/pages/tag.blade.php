@@ -6,7 +6,7 @@
 
 @section('content')
     <div role="main" class="main">
-        <div class="excerpt">
+        <div class="tag-intro">
             <h2>All posts tagged with "{{ $tag->name }}":</h2>
         </div>
 
@@ -36,4 +36,8 @@
         </div>
         @endforeach
     </div>
+@endsection
+
+@section('sidebar')
+    @include('partials.sidebar')
 @endsection

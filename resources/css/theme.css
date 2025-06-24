@@ -107,6 +107,7 @@ html, body { background: #F6F6F0; font-family: 'Open Sans', sans-serif; font-siz
 .main { margin-right: 32%; padding: 120px 20px; }
 
 .main a { color: #658BDC; }
+.main .tag-intro { border-bottom: solid 1px #c6c6c0; color: #666; margin: 10px 20px 30px; }
 .main .excerpt { border-bottom: solid 1px #c6c6c0; color: #666; margin: 10px 20px 30px; }
 .main .excerpt:last-child { border-bottom: none; }
 .main .excerpt .post-title { margin-bottom: 1rem; }
