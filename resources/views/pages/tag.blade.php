@@ -26,7 +26,7 @@
                 <p>{!! $post->excerpt !!}</p>
                 <div class="tags">
                     @foreach($post->tags as $tag)
-                    <a class="tag" href="{{ route('tags.show', $tag) }}">#{{ $tag->name }}</span>
+                    <a class="tag" href="{{ route('tags.show', $tag) }}">#{{ $tag->name }}</a>
                     @endforeach
                 </div>
                 @if ($post->published_at)

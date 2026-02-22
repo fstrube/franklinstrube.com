@@ -18,8 +18,8 @@
         @foreach($posts as $post)
         <div class="excerpt">
             <article>
-                <div 
-                    class="post-title {{ $post->image ? 'with-image' : '' }}" 
+                <div
+                    class="post-title {{ $post->image ? 'with-image' : '' }}"
                     @if($post->image)
                     style="background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.75)), url({{ Storage::url($post->image) }});"
                     @endif
@@ -31,11 +31,11 @@
                 <p>{!! $post->excerpt !!}</p>
                 <div class="tags">
                     @foreach($post->tags as $tag)
-                    <a class="tag" href="{{ route('tags.show', $tag) }}">#{{ $tag->name }}</span>
+                    <a class="tag" href="{{ route('tags.show', $tag) }}">#{{ $tag->name }}</a>
                     @endforeach
                 </div>
                 @if ($post->published_at)
-                <time datetime="{{ $post->published_at->format('c') }}">Posted on {{ $post->published_at->format('l, F j, Y'); }}</time>
+                <time datetime="{{ $post->published_at->format('c') }}">Posted on {{ $post->published_at->format('l, F j, Y') }}</time>
                 @endif
             </article>
         </div>
