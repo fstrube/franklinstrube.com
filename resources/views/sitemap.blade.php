@@ -1,11 +1,12 @@
 @php
     $projects = [
-        'banjo',
+        // 'banjo',
         'civ',
+        'device-cmyk',
         'frak',
         'gridz',
         'mastering-magento-videos',
-        'mythos',
+        // 'mythos',
         'scorecard',
     ];
 @endphp

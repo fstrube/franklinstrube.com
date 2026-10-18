@@ -14,6 +14,11 @@
             'excerpt' => 'A PDF rendering engine and print automation platform.',
         ],
         [
+            'title' => 'device-cmyk',
+            'url' => route('projects.show', 'device-cmyk'),
+            'excerpt' => 'Browser polyfill that adds support for the device-cmyk() color function.',
+        ],
+        [
             'title' => 'Frak',
             'url' => route('projects.show', 'frak'),
             'excerpt' => 'A generic deployment tool for syncing a local codebase with a remote server.',

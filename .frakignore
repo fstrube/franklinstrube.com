@@ -4,6 +4,7 @@
 - .phpunit.result.cache
 - .styleci.yml
 - bootstrap/cache
+- CLAUDE.md
 - database/database.sqlite
 - eslint.config.js
 - node_modules/
